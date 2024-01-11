@@ -1,0 +1,195 @@
+\documentclass[11pt]{article}
+
+\newcommand{\bgk}[1]{\boldsymbol{#1}}
+
+\newcommand{\bzero}{\bgk{0}}
+\newcommand{\bone}{\bgk{1}}
+
+\newcommand{\balpha}{\bgk{\alpha}}
+\newcommand{\bnu}{\bgk{\nu}}
+\newcommand{\bbeta}{\bgk{\beta}}
+\newcommand{\bxi}{\bgk{\xi}}
+\newcommand{\bgamma}{\bgk{\gamma}} 
+\newcommand{\bo}{\bgk{o }}
+\newcommand{\bdelta}{\bgk{\delta}}
+\newcommand{\bpi}{\bgk{\pi}}
+\newcommand{\bepsilon}{\bgk{\epsilon}} 
+\newcommand{\bvarepsilon}{\bgk{\varepsilon}} 
+\newcommand{\brho}{\bgk{\rho}}
+\newcommand{\bvarrho}{\bgk{\varrho}}
+\newcommand{\bzeta}{\bgk{\zeta}}
+\newcommand{\bsigma}{\bgk{\sigma}}
+\newcommand{\boldeta}{\bgk{\eta}}
+\newcommand{\btay}{\bgk{\tau}}
+\newcommand{\btheta}{\bgk{\theta}}
+\newcommand{\bvertheta}{\bgk{\vartheta}}
+\newcommand{\bupsilon}{\bgk{\upsilon}}
+\newcommand{\biota}{\bgk{\iota}}
+\newcommand{\bphi}{\bgk{\phi}}
+\newcommand{\bvarphi}{\bgk{\varphi}}
+\newcommand{\bkappa}{\bgk{\kappa}}
+\newcommand{\bchi}{\bgk{\chi}}
+\newcommand{\blambda}{\bgk{\lambda}}
+\newcommand{\bpsi}{\bgk{\psi}}
+\newcommand{\bmu}{\bgk{\mu}}
+\newcommand{\bomega}{\bgk{\omega}}
+
+\newcommand{\bA}{\bgk{A}}
+\newcommand{\bDelta}{\bgk{\Delta}}
+\newcommand{\bLambda}{\bgk{\Lambda}}
+\newcommand{\bSigma}{\bgk{\Sigma}}
+\newcommand{\bOmega}{\bgk{\Omega}}
+
+\newcommand{\bvec}[1]{\mathbf{#1}}
+
+\newcommand{\va}{\bvec{a}}
+\newcommand{\vb}{\bvec{b}}
+\newcommand{\vc}{\bvec{c}}
+\newcommand{\vd}{\bvec{d}}
+\newcommand{\ve}{\bvec{e}}
+\newcommand{\vf}{\bvec{f}}
+\newcommand{\vh}{\bvec{h}}
+\newcommand{\vi}{\bvec{i}}
+\newcommand{\vj}{\bvec{j}}
+\newcommand{\vk}{\bvec{k}}
+\newcommand{\vl}{\bvec{l}}
+\newcommand{\vm}{\bvec{m}}
+\newcommand{\vn}{\bvec{n}}
+\newcommand{\vo}{\bvec{o}}
+\newcommand{\vp}{\bvec{p}}
+\newcommand{\vq}{\bvec{q}}
+\newcommand{\vr}{\bvec{r}}
+\newcommand{\vs}{\bvec{s}}
+\newcommand{\vt}{\bvec{t}}
+\newcommand{\vu}{\bvec{u}}
+\newcommand{\vv}{\bvec{v}}
+\newcommand{\vw}{\bvec{w}}
+\newcommand{\vx}{\bvec{x}}
+\newcommand{\vy}{\bvec{y}}
+\newcommand{\vz}{\bvec{z}}
+
+\newcommand{\vA}{\bvec{A}}
+\newcommand{\vB}{\bvec{B}}
+\newcommand{\vC}{\bvec{C}}
+\newcommand{\vD}{\bvec{D}}
+\newcommand{\vE}{\bvec{E}}
+\newcommand{\vF}{\bvec{F}}
+\newcommand{\vH}{\bvec{H}}
+\newcommand{\vI}{\bvec{I}}
+\newcommand{\vJ}{\bvec{J}}
+\newcommand{\vK}{\bvec{K}}
+\newcommand{\vL}{\bvec{L}}
+\newcommand{\vM}{\bvec{M}}
+\newcommand{\vN}{\bvec{N}}
+\newcommand{\vO}{\bvec{O}}
+\newcommand{\vP}{\bvec{P}}
+\newcommand{\vQ}{\bvec{Q}}
+\newcommand{\vR}{\bvec{R}}
+\newcommand{\vS}{\bvec{S}}
+\newcommand{\vT}{\bvec{T}}
+\newcommand{\vU}{\bvec{U}}
+\newcommand{\vV}{\bvec{V}}
+\newcommand{\vW}{\bvec{W}}
+\newcommand{\vX}{\bvec{X}}
+\newcommand{\vY}{\bvec{Y}}
+\newcommand{\vZ}{\bvec{Z}}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\usepackage{calc}
+\usepackage{geometry}
+ \geometry{
+ letterpaper,
+ left=30mm,
+ right=30mm,
+ top=30mm,
+ bottom=20mm,
+ }
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{exercise}[theorem]{Exercise}
+
+\usepackage{listings}
+\lstset{
+basicstyle=\footnotesize\ttfamily,
+columns=flexible,
+breaklines=true,
+commentstyle=\color{red},
+keywordstyle=\color{black}\bfseries,
+keepspaces=true
+}
+
+\begin{document}
+
+\begin{flushleft}
+F.M. Faulstich \hfill {\large\bf Math 6590: Homework assignment 1} \hfill {\bf Due:} Friday Jan. 19, 2024.\\
+\end{flushleft}
+
+\begin{exercise}
+Let $\vA\in\mathbb{H}_n$ be PSD. Prove the inequalities
+\begin{equation}
+1 \leq {\rm intdim}(\vA) \leq {\rm rank} (\vA).
+\end{equation}
+Show that the upper bound is saturated if $\vA$ is an orthogonal projector.
+\end{exercise}
+
+\begin{exercise}
+Let $M$ be a square matrix partitioned as 
+\begin{equation}
+\vM = 
+\begin{pmatrix}
+\vA & \vB \\
+\vC & \vD
+\end{pmatrix}.
+\end{equation}
+Let $\vA$ be nonsingular, prove that
+\begin{equation}
+{\rm det}(\vM/\vA) = {\rm det}(\vM)/ {\rm det} (\vA).
+\end{equation}
+\end{exercise}
+
+\begin{exercise}
+Prove that the spectral norm is unitarily invariant, i.e., let $\vA\in\mathbb{C}^{m \times n}$, then
+$$
+\Vert \vW \vA \vS\Vert
+=
+\Vert  \vA \Vert
+$$
+for all unitary matrices $\vW \in\mathbb{C}^{m \times m}$ and $\vS\in\mathbb{C}^{n\times n}$.
+\end{exercise}
+
+\begin{exercise}
+In this programming assignment, you will implement and test your own randomized SVD:
+\begin{enumerate}
+    \item Write a MATLAB program that performs the randomized range sketch. Your routine should take a matrix $\vA$ and a parameter $\ell$ as input and return the orthonormal matrix $\vQ_\ell$ s.t. 
+    $$
+    A \approx \vQ_\ell \vQ_\ell^* \vA
+    $$
+    \item Write a MATLAB program that performs the randomized range finder discussed in class.
+    \item The randomized range sketch as well as the randomized range finder can be used as a sketch. Wrap both routines as ``Stage A'' (you may use an input flag to steer if the range finder or sketch is used), and write an extension using ``Stage B'' discussed in class. This extension should take $\vA$ and $\varepsilon$ as input and return an approximate SVD based on the two-stage low-rank approximation procedure outlined in class. You may use the MATLAB internal routine \texttt{svd} for this stage.
+    \item It is now time to test your routines and convince me that this algorithm is worth using (at least for some matrices). As a benchmark use the MATLAB internal routine \texttt{svd}
+    \begin{enumerate}
+        \item Investigate matrices with exponentially decaying singular values. To that end, create a matrix $\bSigma$ with decreasing values along its diagonal and reverse the SVD to obtain $\vA$. Then, run your implementation of the randomized SVD over a range of sampling parameter values $\ell \in \{1,2,…150\}$. 
+        For each $\ell$ computed two values:
+        \begin{enumerate}
+            \item[$\bullet$] $\sigma_{\ell +1}$ (This is the minimum approximation error by EYM) 
+            \item[$\bullet$] $e_\ell = \Vert  (\bone - \vQ_\ell \vQ_\ell^*)\vA\Vert$ (This is the actual error )
+        \end{enumerate}
+        To know what we are aiming at, compare with Fig. 7.2 in~\cite{halko2011finding}. 
+        Then {\bf also} plot the singular values you picked for $\Sigma$ and compare them with the computed singular values with your code and MATLAB's SVD.
+        \item Change $\bSigma$ above to have rapidly decaying singular values as well as slowly decaying singular values. What do you observe? Again, try to scientifically convince me that your code is useful for some systems, but be also honest in presenting the code's weaknesses.
+        \item Perform timings of your codes. Remember that you should make {\bf at least} five (rather more!) runs per input and take the average time to obtain a smooth and representable timing plot. Perform timing experiments and scale the considered matrices up. Try to push your code to outperform the MATLAB built-in SVD in terms of speed.  
+        \item Experiment with MATLAB profiler to find computational bottlenecks in your code.
+    \end{enumerate}
+\end{enumerate}
+ 
+\end{exercise}
+
+\bibliographystyle{plain} 
+\bibliography{lib.bib} 
+\end{document}
+
+
