@@ -1,0 +1,476 @@
+\documentclass{beamer}
+
+\usefonttheme{serif}
+\usepackage{dsfont}
+\setbeamersize{text margin left=5pt, text margin right=5pt}
+
+\newcommand{\bgk}[1]{\boldsymbol{#1}}
+
+\newcommand{\bzero}{\bgk{0}}
+\newcommand{\bone}{\bgk{1}}
+
+\newcommand{\balpha}{\bgk{\alpha}}
+\newcommand{\bnu}{\bgk{\nu}}
+\newcommand{\bbeta}{\bgk{\beta}}
+\newcommand{\bxi}{\bgk{\xi}}
+\newcommand{\bgamma}{\bgk{\gamma}} 
+\newcommand{\bo}{\bgk{o }}
+\newcommand{\bdelta}{\bgk{\delta}}
+\newcommand{\bpi}{\bgk{\pi}}
+\newcommand{\bepsilon}{\bgk{\epsilon}} 
+\newcommand{\bvarepsilon}{\bgk{\varepsilon}} 
+\newcommand{\brho}{\bgk{\rho}}
+\newcommand{\bvarrho}{\bgk{\varrho}}
+\newcommand{\bzeta}{\bgk{\zeta}}
+\newcommand{\bsigma}{\bgk{\sigma}}
+\newcommand{\boldeta}{\bgk{\eta}}
+\newcommand{\btay}{\bgk{\tau}}
+\newcommand{\btheta}{\bgk{\theta}}
+\newcommand{\bvertheta}{\bgk{\vartheta}}
+\newcommand{\bupsilon}{\bgk{\upsilon}}
+\newcommand{\biota}{\bgk{\iota}}
+\newcommand{\bphi}{\bgk{\phi}}
+\newcommand{\bvarphi}{\bgk{\varphi}}
+\newcommand{\bkappa}{\bgk{\kappa}}
+\newcommand{\bchi}{\bgk{\chi}}
+\newcommand{\blambda}{\bgk{\lambda}}
+\newcommand{\bpsi}{\bgk{\psi}}
+\newcommand{\bmu}{\bgk{\mu}}
+\newcommand{\bomega}{\bgk{\omega}}
+
+\newcommand{\bA}{\bgk{A}}
+\newcommand{\bDelta}{\bgk{\Delta}}
+\newcommand{\bLambda}{\bgk{\Lambda}}
+\newcommand{\bSigma}{\bgk{\Sigma}}
+\newcommand{\bOmega}{\bgk{\Omega}}
+
+\newcommand{\bvec}[1]{\mathbf{#1}}
+
+\newcommand{\va}{\bvec{a}}
+\newcommand{\vb}{\bvec{b}}
+\newcommand{\vc}{\bvec{c}}
+\newcommand{\vd}{\bvec{d}}
+\newcommand{\ve}{\bvec{e}}
+\newcommand{\vf}{\bvec{f}}
+\newcommand{\vg}{\bvec{g}}
+\newcommand{\vh}{\bvec{h}}
+\newcommand{\vi}{\bvec{i}}
+\newcommand{\vj}{\bvec{j}}
+\newcommand{\vk}{\bvec{k}}
+\newcommand{\vl}{\bvec{l}}
+\newcommand{\vm}{\bvec{m}}
+\newcommand{\vn}{\bvec{n}}
+\newcommand{\vo}{\bvec{o}}
+\newcommand{\vp}{\bvec{p}}
+\newcommand{\vq}{\bvec{q}}
+\newcommand{\vr}{\bvec{r}}
+\newcommand{\vs}{\bvec{s}}
+\newcommand{\vt}{\bvec{t}}
+\newcommand{\vu}{\bvec{u}}
+\newcommand{\vv}{\bvec{v}}
+\newcommand{\vw}{\bvec{w}}
+\newcommand{\vx}{\bvec{x}}
+\newcommand{\vy}{\bvec{y}}
+\newcommand{\vz}{\bvec{z}}
+
+\newcommand{\vA}{\bvec{A}}
+\newcommand{\vB}{\bvec{B}}
+\newcommand{\vC}{\bvec{C}}
+\newcommand{\vD}{\bvec{D}}
+\newcommand{\vE}{\bvec{E}}
+\newcommand{\vF}{\bvec{F}}
+\newcommand{\vG}{\bvec{G}}
+\newcommand{\vH}{\bvec{H}}
+\newcommand{\vI}{\bvec{I}}
+\newcommand{\vJ}{\bvec{J}}
+\newcommand{\vK}{\bvec{K}}
+\newcommand{\vL}{\bvec{L}}
+\newcommand{\vM}{\bvec{M}}
+\newcommand{\vN}{\bvec{N}}
+\newcommand{\vO}{\bvec{O}}
+\newcommand{\vP}{\bvec{P}}
+\newcommand{\vQ}{\bvec{Q}}
+\newcommand{\vR}{\bvec{R}}
+\newcommand{\vS}{\bvec{S}}
+\newcommand{\vT}{\bvec{T}}
+\newcommand{\vU}{\bvec{U}}
+\newcommand{\vV}{\bvec{V}}
+\newcommand{\vW}{\bvec{W}}
+\newcommand{\vX}{\bvec{X}}
+\newcommand{\vY}{\bvec{Y}}
+\newcommand{\vZ}{\bvec{Z}}
+
+\usepackage{subcaption}
+\newcommand{\bitem}{\item[$\bullet$]}
+
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareSymbolFont{symbols2}{LS1}{stixfrak} {m} {n}
+\DeclareMathSymbol{\operp}{\mathbin}{symbols2}{"A8}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{lipsum}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\title{
+Low Rank approximation\\
+Lecture 2
+}
+%\subtitle{Mathematical framework, existence and exactness}
+
+\author{F. M. Faulstich}
+\date{01/12/2024}
+
+
+\begin{document}
+
+\frame{\titlepage}
+
+
+\begin{frame}{The SVD}
+
+\begin{itemize}
+    \bitem Recall the SVD of $\vA\in \mathbb{F}^{m \times n}$ is given by
+    $$
+    \vA = \vU \bSigma \vV^* = \sum_{i=1}^{\min(m,n)} \sigma_i\vu_i\vv_i^*
+    $$
+    where $\vU \in \mathbb{F}^{m \times m}$, $\vV \in \mathbb{F}^{n \times n}$ are orthonormal, and $\bSigma \in \mathbb{F}^{m \times n}$ is diagonal. \\
+    Columns of $\vU$ are the left singular vectors\\ 
+    Columns of $\vV$ are the right singular vectors 
+    \bitem The rank of $\vA \in \mathbb{F}^{m \times n}$ is given by the number of non-zero singular values\\
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{The SVD}
+
+\begin{itemize}
+    \bitem One construction: diagonalize
+    $$
+    \vM = 
+\begin{pmatrix}
+\bzero & \vA\\
+\vA^* & \bzero
+\end{pmatrix}
+    $$
+    The eigenvalues come in pairs $(\sigma_i, -\sigma_i)$. \\
+    If $\vA\in \mathbb{F}^{m \times n}$, the first $m$ entries in the eigenvectors are the left singular vectors, and the last $n$ entries are the right singular vectors.
+    \bitem We can then compute the rank $k$ matrix
+    $$
+    \vA_k  
+    = \sum_{i=1}^{k} \sigma_i\vu_i\vv_i^*
+    $$
+    for $k\leq \min(m,n)$.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Eckart-Young-Mirsky}
+
+\begin{itemize}
+    \bitem The matrix $\vA_k$ is a rank $k$ approximation to $\vA$.\\
+    How good of an approximation?
+    \bitem EYM for Frobenius norm:\\
+    Let $\vA\in \mathbb{F}^{m \times n}$ with ${\rm rank}(\vA) = r$. For any $1 \leq k \leq r$ we have
+    $$
+    \Vert \vA - \vA_k \Vert_F 
+    =
+    \inf_{\substack{\vB \in \mathbb{C}^{m \times n}\\{\rm rank}(\vB) \leq k }}
+    \Vert \vA - \vB \Vert_F
+    =
+    \sqrt{\sigma_{k+1}^2 + ... + \sigma_r^2}
+    $$
+    \bitem EYM for spectral norm:\\
+    Let $\vA\in \mathbb{F}^{m \times n}$ with ${\rm rank}(\vA) = r$. For any $1 \leq k \leq r$ we have
+    $$
+    \Vert \vA - \vA_k \Vert
+    =
+    \inf_{\substack{\vB \in \mathbb{C}^{m \times n}\\{\rm rank}(\vB) \leq k }}
+    \Vert \vA - \vB \Vert
+    =
+    \sigma_{k+1}
+    $$
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{The SVD -- The good and the bad}
+
+\begin{itemize}
+    \bitem Galois -- eigendecompositions of generic matrices can only be done iteratively\\
+    (equivalent to polynomial factorization)
+    \bitem Practically speaking, computing the SVD takes $\mathcal{O}(mnp)$ operations where $p = \min(m,n)$\\
+    \bitem SVD algorithms are difficult to parallelize and tend to be slower than forming other decompositions
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The QR decomposition -- Vanilla version}
+\begin{itemize}
+    \bitem The QR decomposition of $\vA \in \mathbb{F}^{m \times n}$ is given by
+    $$
+    \vA = \vQ \vR
+    $$
+    where $\vQ\in\mathbb{F}^{m \times m}$ is orthonormal, and $\vR\in\mathbb{F}^{m \times n}$ is upper triangular. 
+    \bitem Use classical Gram-Schmidt: Store the inner products and normalization in $\vR$, and store the orthonormal vectors in $\vQ$.
+    \bitem CGS can be unstable: Suppose that the first few columns are all essentially parallel with small errors. CGS will try to construct orthogonal vectors out of a set of essentially identical vectors!\\
+    Sadly, there are a number of applications in which this is the setup ...
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The QR decomposition -- Column-pivoted QR}
+\begin{itemize}
+    \bitem Instead of CGS, let's try to write
+    $$
+    \vA \vP = \vQ \vR
+    $$
+    where:\\
+    $\vA \in \mathbb{F}^{m \times n}$\\
+    $\vP \in \mathbb{F}^{n \times n}$ is a permutation matrix\\
+    $\vQ\in\mathbb{F}^{m \times n}$ orthonormal\\ 
+    $\vR\in\mathbb{F}^{n \times n}$ upper triangular
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The QR decomposition -- CPQR algorithm}
+\begin{itemize}
+    \bitem Initialize $\vQ_0 = []$, $\vR_0 = []$, $\vE_0 = \vA$, $p = \min(m,n)$
+    \bitem for $k = 1 : p$\\
+    $\qquad j_k = {\rm argmax} \{ \Vert \vE_{k-1}(:,\ell)\Vert ~|~ \ell =1,...,n\}$\\
+    $\qquad \vq = \vE_{k-1}(:,j_k)/ \Vert \vE_{k-1}(:,j_k) \Vert$\\
+    $\qquad \vr = \vq^* \vE_{k-1}$\\
+    $\qquad \vQ_k = (\vQ_{k-1}, \vq)$\\
+    $\qquad \vR_k = \begin{pmatrix}
+    \vR_{k-1}\\ \vr
+    \end{pmatrix}$\\
+    $\qquad \vE_k = \vE_{k-1} - \vq \vr$\\
+    end for
+    \bitem $\vQ = \vQ_p$, $\vR = \vR_p$, $\vP = (j_1, ..., j_p)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Low rank via QR}
+\begin{itemize}
+    \bitem After $k$ steps of the previous algorithm, we have
+    $$
+    \vA = \vQ_k \vR_k + \vE_k
+    $$
+    where $\vA, \vE_k \in \mathbb{F}^{m \times n}$, $\vQ_k \in \mathbb{F}^{m \times k}$ and $\vR_k \in \mathbb{F}^{k \times n}$
+    \bitem The first term is of rank $k$, and the second term is the reminder.
+    \bitem A reasonable stopping criterion would be 
+    $$
+    \Vert \vE_k \Vert_F \leq \varepsilon
+    $$
+    \bitem We can use the partial CPQR to obtain a partial SVD\\
+    1) Compute an SVD of $\vR_k = \hat{\vU}\bSigma \vV^*$ (cheap since $\vR_k$ has $k$ rows)\\
+    2) Set $\vU = \vQ_k \hat{\vU}$\\
+    $\Rightarrow$ $\vA = \vU \bSigma \vV^* + \vE_k$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The interpolative decomposition\\ \begin{small}
+a.k.a. skeletonization
+\end{small}}
+
+\begin{itemize}
+    \bitem The ID of $\vA \in \mathbb{F}^{m \times n}$ is given by
+    $$
+    \vA = \vC \vZ
+    $$
+    where $\vC\in\mathbb{F}^{m \times k}$ consists of $k$ columns of $\vA$ and $\vZ\in\mathbb{F}^{k \times n}$ is a ``well-conditioned'' matrix. 
+    \bitem Clearly, if $\vA$ is sparse or non-negative then $\vC$ will also be sparse or non-negative. \\
+    (This is not true with the QR or SVD)
+    \bitem The ID typically requires less memory than QR or SVD
+    \bitem The indices of the columns tell us something about the data!\\
+    (Also physics preserving)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The interpolative decomposition\\ \begin{small}
+a.k.a. skeletonization
+\end{small}}
+\begin{itemize}
+    \bitem There is also a row-based ID of $\vA \in \mathbb{F}^{m \times n}$:
+    $$
+    \vA = \vX \vR
+    $$
+    where $\vX\in \mathbb{F}^{m \times k}$ is well-conditioned and the rows of $\vR\in \mathbb{F}^{k \times n}$ are a subset of the rows of $\vA$.
+    \bitem Finally, we do both:
+    $$
+    \vA = \vX \vA_s \vZ
+    $$
+    where $\vX\in \mathbb{F}^{m \times k}$ and $\vZ\in \mathbb{F}^{k \times n}$ are well-conditioned, and $\vA_s \in \mathbb{F}^{k \times k}$ is a submatrix of $\vA$.
+    \bitem The latter can be formed by taking a row-ID of the column-ID or vice versa. 
+    \bitem The choices of subsets of rows and columns are often referred to as skeletons
+\end{itemize}
+\end{frame}
+
+\begin{frame}{How do we compute it?}
+
+\begin{itemize}
+    \bitem From CPQR we obtain a set of columns that effectively span the column space. They are also, in a certain sense, pretty orthogonal to each other.
+    \bitem Write: $\vA \vP = \vQ\vS$ and set
+    $$
+    \vQ = (\vQ_1, \vQ_2)
+    \quad {\rm and} \quad
+    \vS = \begin{pmatrix}
+    \vS_{11} & \vS_{12}\\
+    \bzero & \vS_{22}
+    \end{pmatrix}
+    $$
+    where $\vQ_1 \in \mathbb{F}^{m \times k}$, $\vQ_2 \in \mathbb{F}^{m \times (n -k)}$, $\vS_{11} \in \mathbb{F}^{k \times k}$, etc.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{How do we compute it?}
+
+\begin{itemize}
+    \bitem Then 
+    \begin{align*}
+    \vA \vP 
+    &= 
+    (\vQ_1\vS_{11}, \vQ_1\vS_{12} + \vQ_2\vS_{22})\\
+    &=\vQ_1 (\vS_{11}, \vS_{12}) + \vQ_2 (\bzero, \vS_{22})\\
+    &=\vQ_1 \vS_{11} (\bone, \vS_{11}^{-1}\vS_{12}) + \vQ_2 (\bzero, \vS_{22})\\
+    &=\vQ_1 \vS_{11} (\bone, \vT) + \vQ_2 (\bzero, \vS_{22})\\
+    \Leftrightarrow
+    \vA
+    &=
+    \vQ_1 \vS_{11} (\bone, \vT)\vP^* + \vQ_2 (\bzero, \vS_{22})\vP^*\\
+    &=
+    \vQ_1 \vS_{11} \vZ + \vQ_2 (\bzero, \vS_{22})\vP^*\\
+    &=
+    \vC \vZ + \vQ_2 (\bzero, \vS_{22})\vP^*\\
+    \end{align*}
+    \bitem What bout $\vS_{11}^{-1}$? If $\vA$ is at least rank $k$ then $\vS_{11}$ is invertible.\\ 
+    If it is not, then change $k$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What about speed?\\
+\begin{small}
+Randomized low-rank approximations
+\end{small}
+}
+
+\begin{itemize}
+    \bitem At some point it is difficult to guarantee that the deterministic columns we chose are guaranteed to be a well-conditioned basis for the entire column space. This can be especially problematic when we don't know the rank!
+    \bitem Idea (exactly rank $k$): random sketching.\\ 
+    Apply your matrix to a suitably-scaled random matrix. 
+    With probability 1 it won't `miss' any of the columns.
+    \bitem Example:\\ 
+    Consider $\vG \in \mathbb{R}^{n\times k}$ an i.i.d. Gaussian matrix. \\
+    Set $\vY = \vA \vG$ and $\vA_k = \vY(\vY^\dagger \vA)$\\
+    ... How to calculate?
+\end{itemize}
+   
+\end{frame}
+
+
+\begin{frame}{Two-stage low-rank approximation}
+
+\begin{itemize}
+    \bitem Given $\vA \in \mathbb{F}^{m \times n}$ of rank $k$.
+    \bitem Stage A: Sketch it! \\
+    Compute an approximate basis for the range of $\vA$, i.e., $\vQ \in \mathbb{F}^{m \times \ell}$ orthonormal with $k \leq \ell \leq n$ s.t.
+    $$
+    \vA \approx \vQ \vQ^*\vA
+    $$
+    \bitem Stage B: Classical factorization\\
+    Compute SVD of $\vB = \vQ^* \vA \in \mathbb{F}^{\ell \times n}$ (this is a much smaller matrix!)\\
+    $$
+    \vB = \hat{\vU} \bSigma \vV^*
+    $$
+    and define $\vU = \vQ  \hat{\vU}$
+    \bitem $\bf{All}$ accuracy loss and computational cost are now in Stage A!
+\end{itemize}
+    
+\end{frame}
+
+
+
+\begin{frame}{Sketching -- The good and the bad}
+    \begin{itemize}
+        \bitem Obviously, the best sketching vectors are singular vectors... which would defeat the point.
+        \bitem If the matrix is exactly rank $k$ and we sketch with a matrix of size $m \times k$ then (with probability 1) the column space of $Y$ will contain the column space of A and so (disregarding condition number issues) can be used as a sketching matrix.
+        \bitem If the ${\rm rank}(\vA)$ is not exactly $k$ the lower singular vectors can contaminate the entries of $Y$ producing poor results.\\ 
+        The fix? Take $k + 10$...
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sketching}
+\begin{itemize}
+    \bitem Fix a small integer $p$ (like 10 or 50).
+    \bitem For a set of $k+p$ Gaussian ransom vectors $\{\vg_j\}$
+    \bitem Apply $\vA$ to obtain $\vy_j = \vA \vg_j$
+    \bitem Perform Gram-Schmidt of $\vy_j$ to obtain $\vq_j$
+    \bitem This still requires $\mathcal{O} (mnk)$ work -- though can be optimized! (matmat, matvec, etc)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Randomized range finder}
+
+\begin{itemize}
+    \bitem We want to find $\vQ\in \mathbb{F}^{m \times \ell}$ with smallest $\ell$ s.t.
+    $$
+    \Vert \bone - \vQ^* \vQ \vA \Vert \leq \varepsilon
+    $$
+    for a desired $\varepsilon$.
+    \bitem Incrementally use the previous idea:\\
+    $\qquad 1.$ Draw a Gaussian vector $\vg_i$ and compute $\vy_i = \vA \vg_j$\\
+    $\qquad 2.$ Construct $\tilde \vq = (\bone - \vQ_{i-1}\vQ_{i-1}^*) \vy_i$ \\
+    $\qquad 3.$ Set $\vq_i = \tilde \vq / \Vert \tilde \vq \Vert$ \\
+    $\qquad 4.$ Form $\vQ_i = (\vQ_{i-1} , \vq_i) $\\
+    Continue until the desired accuracy is reached.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{RSVD}
+\begin{itemize}
+    \bitem Halko, Martinsson, and Tropp [Theorem 1.1]:\\
+    Suppose that $\vA\in\mathbb{R}^{m \times n}$. Select a target rank $k \geq 2$ and an oversampling parameter $p \geq 2$, where $k+p \leq \min{m,n}$. Execute the proto-algorithm with a standard Gaussian test matrix to obtain $\vQ \in\mathbb{R}^{m \times (k+p)}$ orthonormal. Then
+    $$
+    \mathbb{E} \left(
+    \Vert \vA - \vQ \vQ^* \vA \Vert
+    \right)
+    \leq 
+    \left(
+    1 + \frac{4\sqrt{k+p}}{p-1} 
+    \sqrt{\min(m,n)}
+    \right)\sigma_{k+1}
+    $$
+    Recall EYM:\\
+    $$
+    \inf_{\substack{\vB \in \mathbb{C}^{m \times n}\\{\rm rank}(\vB) \leq k }}
+    \Vert \vA - \vB \Vert
+    =
+    \sigma_{k+1}
+    $$
+    \bitem On average, the algorithm produces a basis whose error lies within a small polynomial factor of the theoretical minimum 
+\end{itemize}
+    
+\end{frame}
+
+
+
+\end{document}
+
+
+
+

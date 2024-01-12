@@ -136,32 +136,57 @@ Lecture 1
 
 \frame{\titlepage}
 
-\begin{frame}{}
-    
+\begin{frame}{General info}
+
+\begin{itemize}
+    \item[$\bullet$] Course Website: \href{https://fabianfaulstich.github.io/MATH6950_2024/}{https://fabianfaulstich.github.io/MATH6950\_2024/}
+    \item[$\bullet$] Homework assignments: 
+    \begin{enumerate}
+        \item Submission through Gradescope. 
+        \item Gradescope will close on the due date at 11:59 p.m.\\
+        {\bf No late submissions!}
+        \item Everyone get {\bf one} joker
+        \item  zero-tolerance policy regarding cheating
+    \end{enumerate}
+    \item[$\bullet$] Lectures:
+        \begin{enumerate}
+            \item hybrid slides and blackboard lecturing
+            \item the slide part will be made available online
+            \item Code presented and used in class will be made available online
+        \end{enumerate}
+    \item[$\bullet$] Programming assignments:
+    \begin{enumerate}
+        \item P.A.s will carry substantial points in each homework
+        \item To gain full credit you have to show exploration and clear reasoning 
+    \end{enumerate}
+\end{itemize}
+
 \end{frame}
 
 
-\begin{frame}{Planned course Outlook}
+\begin{frame}{Planned course outlook}
 
 \begin{enumerate}
     \item Review of numerical linear algebra and probability theory
-    \item Trace estimation and Schatten $p$-norm estimation (M.C. methods)
-    \item Sampling to approximate matrices (matrix multiplication)
-    \item Randomized linear embedding
-    \item Randomized techniques to find subspace
-that is aligned with the range of a matrix 
-    \item Randomized algorithms for computing matrix factorizations
-    \item Solving linear systems with randomized techniques
+    \item Low-rank approximations and randomness
+    \item[$\vdots$]
+%     \item Trace estimation and Schatten $p$-norm estimation (M.C. methods)
+%     \item Sampling to approximate matrices (matrix multiplication)
+%     \item Randomized linear embedding
+%     \item Randomized techniques to find subspace
+% that is aligned with the range of a matrix 
+%     \item Randomized algorithms for computing matrix factorizations
+%     \item Solving linear systems with randomized techniques
 \end{enumerate}
 
 \end{frame}
 
-\begin{frame}{What to expect!}
+\begin{frame}{What to expect}
 
 \begin{itemize}
     \item[$\bullet$] The course is centered primarily on computational aspects
     \item[$\bullet$] Aimed at equipping you with a robust set of computational skills
-    \item[$\bullet$] Proofs will be included occasionally, but only at a high level
+    \item[$\bullet$] Proofs will be included (mostly) at a high level
     \item[$\bullet$] The course aims to impart an understanding of the key ideas behind proofs rather than delving into exhaustive, fully worked-out proofs
 \end{itemize}
 
@@ -171,7 +196,7 @@ that is aligned with the range of a matrix
 
 \begin{itemize}
     \item[$\bullet$]<1-> solving dense and sparse linear systems
-    \item[$\bullet$]<2-> orthogonalization, least square \& Tikhonov regularization
+    \item[$\bullet$]<2-> orthogonalization, least square \& (Tikhonov) regularization
     \item[$\bullet$]<5-> determination of eigenvalues \& eigenvectors, invariant subspaces
     \item[$\bullet$]<7-> singular value decomposition (SVD)
 \end{itemize}    
@@ -204,18 +229,33 @@ that is aligned with the range of a matrix
 What is the problem?\\
 ~\\
 $\Rightarrow$ Large scaling problems!\\
-% ~\\
-% Example:\\
-% Some example
+ ~\\
+Example:\\
+Given an $m\times n$ matrix $\vA$ where both $m$ and $n$ are large, the singular value decomposition will require memory and time which is superlinear in $m$ and $n$\\
+$$
+\qquad\qquad\qquad\qquad\qquad 
+\mathcal{O} (4mn^2 - \frac{4}{3}n^3)  
+\qquad\qquad\qquad\qquad 
+(GK)
+$$
+~\\
+Randomized algorithms bring this down to $m$ and $k$, where $k$ is the rank
+$$
+\qquad\qquad\qquad\qquad\qquad 
+\mathcal{O} (2kn^2 + 2n^3)
+\qquad\qquad\qquad\qquad 
+(LHC)
+$$
+
 \end{frame}
 
-\begin{frame}{Numerical linear algebra}
+% \begin{frame}{Numerical linear algebra}
 
-\begin{center}
-``Randomized'' linear algebra offers novel tools addressing these challenges
-\end{center}
+% \begin{center}
+% ``Randomized'' linear algebra offers novel tools addressing these challenges
+% \end{center}
 
-\end{frame}
+% \end{frame}
 
 
 \begin{frame}{Randomized algorithms}
@@ -224,11 +264,13 @@ $\Rightarrow$ Large scaling problems!\\
     $\cdot$ Last resort methods\\
     $\cdot$ M.C. converges slowly\\
     $\cdot$ Hesitation: Two runs should produce the same number
+    \pause
     \item Randomized algorithms in numerical linear algebra ($\sim$1980)\\
     $\cdot$ Power method, random initialization (Dixon 1983)\\
     $\cdot$ M.~C.~methods for trace estimation (Girard 1989 \& Hutchinson 1990)\\
     $\cdot$ Randomized transformations can avoid pivoting
 steps in Gaussian elimination (Parker 1995)\\
+    \pause
     \item  Practical randomized algorithms for low-rank matrix approximation and least-squares problems (mid-2000s)\\
     $\cdot$ First computational evidence that randomized algorithms outperform classical NLA algorithms for particular classes of problems
 \end{enumerate}
@@ -318,7 +360,8 @@ steps in Gaussian elimination (Parker 1995)\\
 \begin{itemize}
     \item[$\bullet$] $*$ is the conjugate transpose
     \item[$\bullet$] $\mathbb{H}_n = \mathbb{H}_n(\mathbb{F}) = \{ \vA\in\mathbb{F}^{n\times n}~:~ \vA = \vA^* \}$
-    \item[$\bullet$] $\dagger$ is the Moor--Penrose (pseudo)inverse: 
+    \item[$\bullet$] $\dagger$ is the Moor--Penrose (pseudo)inverse:\\ 
+    \pause
     $\vA^\dagger$ is the MP inverse of $\vA$ iff
     \begin{equation*}
     \begin{aligned}
@@ -326,6 +369,7 @@ steps in Gaussian elimination (Parker 1995)\\
     (ii)&\quad \vA^\dagger\vA\vA^\dagger = \vA^\dagger \qquad &(iv)&\quad (\vA^\dagger\vA)^* = \vA^\dagger\vA
     \end{aligned}
     \end{equation*}
+    \pause
     If $\vA$ has full column rank, then  $\vA^\dagger = (\vA^* \vA)^{-1} \vA^*$\\
     If $\vA$ attains an inverse then
     $$
@@ -344,7 +388,7 @@ steps in Gaussian elimination (Parker 1995)\\
      $$
      \vA \preccurlyeq \vB \Leftrightarrow 0 \preccurlyeq \vB- \vA
      $$
-     \item[$\bullet$] $\prec$ denotes the semidefinte order on $\mathbb{H}_n$, i.e. 
+     \item[$\bullet$] $\prec$ denotes the definte order on $\mathbb{H}_n$, i.e. 
      $$
      \vA \prec \vB \Leftrightarrow 0  \prec \vB- \vA
      $$
@@ -415,7 +459,7 @@ that fulfills:
     \item $\Vert a \vA \Vert = |a| \Vert \vA \Vert,~ \forall \vA \in \mathbb{F}^{m \times n},$ and $\forall a\in\mathbb{F}$
     \item $\Vert \vA + \vB \Vert \leq \Vert \vA \Vert + \Vert \vB \Vert,~\forall \vA, \vB \in \mathbb{F}^{m \times n}$
 \end{enumerate}
-\item[$\bullet$] $\Vert \cdot \Vert$ is an induced matrix norm iff 
+%\item[$\bullet$] $\Vert \cdot \Vert$ is an induced matrix norm iff 
 \end{itemize}
 
 \end{frame}
@@ -497,11 +541,14 @@ $$
 :=
 \frac{{\rm Tr}(\vA)}{\Vert \vA \Vert}
 $$
+\pause
 Note:
 $$
 1\leq {\rm intdim}(\vA) \leq {\rm rank} (\vA)
 $$
-The upper bound is saturated if $\vA$ is an orthogonal projector i.e.
+The upper bound is saturated if $\vA$ is an orthogonal projector
+\pause 
+i.e.
 \begin{enumerate}
     \item $\vA \in \mathbb{F}^{m\times m}$ and $\vA ^2 = \vA $
     \item $\vA$ is projector and $\vA \in \mathbb{H}_n$
@@ -549,7 +596,7 @@ $$
 :=
 \vD - \vC \vA^{-1} \vB
 $$
-The latter is used for Cholesky factorization.\\
+The latter is used for Cholesky factorization ($\vM \in \mathbb{H}_n$ and $\vA \in \mathbb{F}^{1 \times 1}$).\\
 ~\\
 \begin{center}
 What if $\vD$ of $\vA$ are singular or not square?

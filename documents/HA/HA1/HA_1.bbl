@@ -1,0 +1,9 @@
+\begin{thebibliography}{1}
+
+\bibitem{halko2011finding}
+Nathan Halko, Per-Gunnar Martinsson, and Joel~A Tropp.
+\newblock Finding structure with randomness: Probabilistic algorithms for
+  constructing approximate matrix decompositions.
+\newblock {\em SIAM review}, 53(2):217--288, 2011.
+
+\end{thebibliography}
