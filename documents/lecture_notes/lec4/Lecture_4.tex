@@ -1,0 +1,251 @@
+\documentclass{beamer}
+
+\usefonttheme{serif}
+\usepackage{dsfont}
+\setbeamersize{text margin left=5pt, text margin right=5pt}
+
+\newcommand{\bgk}[1]{\boldsymbol{#1}}
+
+\newcommand{\bzero}{\bgk{0}}
+\newcommand{\bone}{\bgk{1}}
+
+\newcommand{\balpha}{\bgk{\alpha}}
+\newcommand{\bnu}{\bgk{\nu}}
+\newcommand{\bbeta}{\bgk{\beta}}
+\newcommand{\bxi}{\bgk{\xi}}
+\newcommand{\bgamma}{\bgk{\gamma}} 
+\newcommand{\bo}{\bgk{o }}
+\newcommand{\bdelta}{\bgk{\delta}}
+\newcommand{\bpi}{\bgk{\pi}}
+\newcommand{\bepsilon}{\bgk{\epsilon}} 
+\newcommand{\bvarepsilon}{\bgk{\varepsilon}} 
+\newcommand{\brho}{\bgk{\rho}}
+\newcommand{\bvarrho}{\bgk{\varrho}}
+\newcommand{\bzeta}{\bgk{\zeta}}
+\newcommand{\bsigma}{\bgk{\sigma}}
+\newcommand{\boldeta}{\bgk{\eta}}
+\newcommand{\btay}{\bgk{\tau}}
+\newcommand{\btheta}{\bgk{\theta}}
+\newcommand{\bvertheta}{\bgk{\vartheta}}
+\newcommand{\bupsilon}{\bgk{\upsilon}}
+\newcommand{\biota}{\bgk{\iota}}
+\newcommand{\bphi}{\bgk{\phi}}
+\newcommand{\bvarphi}{\bgk{\varphi}}
+\newcommand{\bkappa}{\bgk{\kappa}}
+\newcommand{\bchi}{\bgk{\chi}}
+\newcommand{\blambda}{\bgk{\lambda}}
+\newcommand{\bpsi}{\bgk{\psi}}
+\newcommand{\bmu}{\bgk{\mu}}
+\newcommand{\bomega}{\bgk{\omega}}
+
+\newcommand{\bA}{\bgk{A}}
+\newcommand{\bDelta}{\bgk{\Delta}}
+\newcommand{\bLambda}{\bgk{\Lambda}}
+\newcommand{\bSigma}{\bgk{\Sigma}}
+\newcommand{\bOmega}{\bgk{\Omega}}
+
+\newcommand{\bvec}[1]{\mathbf{#1}}
+
+\newcommand{\va}{\bvec{a}}
+\newcommand{\vb}{\bvec{b}}
+\newcommand{\vc}{\bvec{c}}
+\newcommand{\vd}{\bvec{d}}
+\newcommand{\ve}{\bvec{e}}
+\newcommand{\vf}{\bvec{f}}
+\newcommand{\vg}{\bvec{g}}
+\newcommand{\vh}{\bvec{h}}
+\newcommand{\vi}{\bvec{i}}
+\newcommand{\vj}{\bvec{j}}
+\newcommand{\vk}{\bvec{k}}
+\newcommand{\vl}{\bvec{l}}
+\newcommand{\vm}{\bvec{m}}
+\newcommand{\vn}{\bvec{n}}
+\newcommand{\vo}{\bvec{o}}
+\newcommand{\vp}{\bvec{p}}
+\newcommand{\vq}{\bvec{q}}
+\newcommand{\vr}{\bvec{r}}
+\newcommand{\vs}{\bvec{s}}
+\newcommand{\vt}{\bvec{t}}
+\newcommand{\vu}{\bvec{u}}
+\newcommand{\vv}{\bvec{v}}
+\newcommand{\vw}{\bvec{w}}
+\newcommand{\vx}{\bvec{x}}
+\newcommand{\vy}{\bvec{y}}
+\newcommand{\vz}{\bvec{z}}
+
+\newcommand{\vA}{\bvec{A}}
+\newcommand{\vB}{\bvec{B}}
+\newcommand{\vC}{\bvec{C}}
+\newcommand{\vD}{\bvec{D}}
+\newcommand{\vE}{\bvec{E}}
+\newcommand{\vF}{\bvec{F}}
+\newcommand{\vG}{\bvec{G}}
+\newcommand{\vH}{\bvec{H}}
+\newcommand{\vI}{\bvec{I}}
+\newcommand{\vJ}{\bvec{J}}
+\newcommand{\vK}{\bvec{K}}
+\newcommand{\vL}{\bvec{L}}
+\newcommand{\vM}{\bvec{M}}
+\newcommand{\vN}{\bvec{N}}
+\newcommand{\vO}{\bvec{O}}
+\newcommand{\vP}{\bvec{P}}
+\newcommand{\vQ}{\bvec{Q}}
+\newcommand{\vR}{\bvec{R}}
+\newcommand{\vS}{\bvec{S}}
+\newcommand{\vT}{\bvec{T}}
+\newcommand{\vU}{\bvec{U}}
+\newcommand{\vV}{\bvec{V}}
+\newcommand{\vW}{\bvec{W}}
+\newcommand{\vX}{\bvec{X}}
+\newcommand{\vY}{\bvec{Y}}
+\newcommand{\vZ}{\bvec{Z}}
+
+\usepackage{subcaption}
+\newcommand{\bitem}{\item[$\bullet$]}
+
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareSymbolFont{symbols2}{LS1}{stixfrak} {m} {n}
+\DeclareMathSymbol{\operp}{\mathbin}{symbols2}{"A8}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{lipsum}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\title{
+MATLAB Review\\
+-- Numerical Integration --\\
+Lecture 4
+}
+%\subtitle{Mathematical framework, existence and exactness}
+
+\author{F. M. Faulstich}
+\date{01/19/2024}
+
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Middle Riemann Sums}
+
+Let $f:[a,b] \to \mathbb{R}$ be a function defines on a closed interval $[a,b]\subset \mathbb{R}$ and let $\{x_0,...,x_n\}$ be a partition of $[a,b]$, i.e.,
+$$
+a = x_0 <x_1 <...<x_n = b.
+$$
+Then
+$$
+R(f,n)
+=
+\sum_{i=1}^{n} f(\tilde{x}_{i}) \Delta x_i
+$$
+where $\Delta x_i = x_i - x_{i-1}$ and $\tilde{x}_i = (x_i + x_{i+1})/2$.
+    
+\end{frame}
+
+\begin{frame}{Middle Riemann sum error}
+
+\begin{itemize}
+    \bitem Let $f:[a,b] \to \mathbb{R}$ be a twice continuous differentiable function and 
+    $$
+    M = \sup_{x\in [a,b]} |f''(x)|
+    $$
+    Then
+    $$
+    |R_{\rm mid}(f,n) - F| \leq \frac{M (b-a)^3}{24n^2} \sim \mathcal{O}\left( \frac{1}{n^2}\right)
+    $$
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Simpson's rule}
+
+We are interested in computing
+$$
+F=\int_a^b f(x)~dx
+$$
+~\\
+Simpson's rule:
+
+Let $f:[a,b] \to \mathbb{R}$ be a function defines on a closed interval $[a,b]\subset \mathbb{R}$ and let $\{x_0,...,x_n\}$ be a partition of $[a,b]$ with $n$ even, i.e.,
+$$
+a = x_0 <x_1 <...<x_n = b.
+$$
+Then
+$$
+S(f,n)
+=
+\frac{\Delta x}{3}
+\left(
+f(x_0) + 
+4 \sum_{i = 0}^{n/2-1} f(x_{2i+1}) + 
+2\sum_{i = 1}^{n/2-1} f(x_{2i}) + 
+f(x_n)
+\right)
+$$
+
+    
+\end{frame}
+
+
+\begin{frame}{Simpson's rule error}
+
+\begin{itemize}
+    \bitem Let $f:[a,b] \to \mathbb{R}$ be a four-times continuously differentiable function and 
+    $$
+    M = \sup_{x\in [a,b]} |f''(x)|
+    $$
+    Then
+    $$
+    |S(f,n) - F| \leq \frac{M (b-a)^5}{180 n^4} \sim \mathcal{O}\left( \frac{1}{n^4}\right)
+    $$
+\end{itemize}
+    
+\end{frame}
+
+
+
+\begin{frame}{Monte Carlo Estimator}
+
+We approximate $F$ by averaging samples of the function $f$ at uniform random points in $[a,b]$. \\
+~\\
+Formally: Given $N$ uniform random variables $X_i \sim \mathcal{U}(a,b)$, its PDF is 
+$$
+\rho(x)
+=
+\frac{1}{b-a}\mathds{1}_{[a,b]}(x)
+$$
+and define the Monte Carlo estimator as
+$$
+\left\langle
+F^N
+\right\rangle
+=
+(b-a) \frac{1}{N} \sum_{i=1}^{N} f(X_i)
+$$
+
+\end{frame}
+
+
+
+\end{document}
+
+
+
+
