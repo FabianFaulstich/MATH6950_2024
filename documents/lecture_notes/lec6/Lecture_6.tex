@@ -1,0 +1,491 @@
+\documentclass{beamer}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usefonttheme{serif}
+\usepackage{dsfont}
+\setbeamersize{text margin left=5pt, text margin right=5pt}
+
+\newcommand{\bgk}[1]{\boldsymbol{#1}}
+
+\newcommand{\bzero}{\bgk{0}}
+\newcommand{\bone}{\bgk{1}}
+
+\newcommand{\balpha}{\bgk{\alpha}}
+\newcommand{\bnu}{\bgk{\nu}}
+\newcommand{\bbeta}{\bgk{\beta}}
+\newcommand{\bxi}{\bgk{\xi}}
+\newcommand{\bgamma}{\bgk{\gamma}} 
+\newcommand{\bo}{\bgk{o }}
+\newcommand{\bdelta}{\bgk{\delta}}
+\newcommand{\bpi}{\bgk{\pi}}
+\newcommand{\bepsilon}{\bgk{\epsilon}} 
+\newcommand{\bvarepsilon}{\bgk{\varepsilon}} 
+\newcommand{\brho}{\bgk{\rho}}
+\newcommand{\bvarrho}{\bgk{\varrho}}
+\newcommand{\bzeta}{\bgk{\zeta}}
+\newcommand{\bsigma}{\bgk{\sigma}}
+\newcommand{\boldeta}{\bgk{\eta}}
+\newcommand{\btay}{\bgk{\tau}}
+\newcommand{\btheta}{\bgk{\theta}}
+\newcommand{\bvertheta}{\bgk{\vartheta}}
+\newcommand{\bupsilon}{\bgk{\upsilon}}
+\newcommand{\biota}{\bgk{\iota}}
+\newcommand{\bphi}{\bgk{\phi}}
+\newcommand{\bvarphi}{\bgk{\varphi}}
+\newcommand{\bkappa}{\bgk{\kappa}}
+\newcommand{\bchi}{\bgk{\chi}}
+\newcommand{\blambda}{\bgk{\lambda}}
+\newcommand{\bpsi}{\bgk{\psi}}
+\newcommand{\bmu}{\bgk{\mu}}
+\newcommand{\bomega}{\bgk{\omega}}
+
+\newcommand{\bA}{\bgk{A}}
+\newcommand{\bDelta}{\bgk{\Delta}}
+\newcommand{\bLambda}{\bgk{\Lambda}}
+\newcommand{\bSigma}{\bgk{\Sigma}}
+\newcommand{\bOmega}{\bgk{\Omega}}
+
+\newcommand{\bvec}[1]{\mathbf{#1}}
+
+\newcommand{\va}{\bvec{a}}
+\newcommand{\vb}{\bvec{b}}
+\newcommand{\vc}{\bvec{c}}
+\newcommand{\vd}{\bvec{d}}
+\newcommand{\ve}{\bvec{e}}
+\newcommand{\vf}{\bvec{f}}
+\newcommand{\vg}{\bvec{g}}
+\newcommand{\vh}{\bvec{h}}
+\newcommand{\vi}{\bvec{i}}
+\newcommand{\vj}{\bvec{j}}
+\newcommand{\vk}{\bvec{k}}
+\newcommand{\vl}{\bvec{l}}
+\newcommand{\vm}{\bvec{m}}
+\newcommand{\vn}{\bvec{n}}
+\newcommand{\vo}{\bvec{o}}
+\newcommand{\vp}{\bvec{p}}
+\newcommand{\vq}{\bvec{q}}
+\newcommand{\vr}{\bvec{r}}
+\newcommand{\vs}{\bvec{s}}
+\newcommand{\vt}{\bvec{t}}
+\newcommand{\vu}{\bvec{u}}
+\newcommand{\vv}{\bvec{v}}
+\newcommand{\vw}{\bvec{w}}
+\newcommand{\vx}{\bvec{x}}
+\newcommand{\vy}{\bvec{y}}
+\newcommand{\vz}{\bvec{z}}
+
+\newcommand{\vA}{\bvec{A}}
+\newcommand{\vB}{\bvec{B}}
+\newcommand{\vC}{\bvec{C}}
+\newcommand{\vD}{\bvec{D}}
+\newcommand{\vE}{\bvec{E}}
+\newcommand{\vF}{\bvec{F}}
+\newcommand{\vG}{\bvec{G}}
+\newcommand{\vH}{\bvec{H}}
+\newcommand{\vI}{\bvec{I}}
+\newcommand{\vJ}{\bvec{J}}
+\newcommand{\vK}{\bvec{K}}
+\newcommand{\vL}{\bvec{L}}
+\newcommand{\vM}{\bvec{M}}
+\newcommand{\vN}{\bvec{N}}
+\newcommand{\vO}{\bvec{O}}
+\newcommand{\vP}{\bvec{P}}
+\newcommand{\vQ}{\bvec{Q}}
+\newcommand{\vR}{\bvec{R}}
+\newcommand{\vS}{\bvec{S}}
+\newcommand{\vT}{\bvec{T}}
+\newcommand{\vU}{\bvec{U}}
+\newcommand{\vV}{\bvec{V}}
+\newcommand{\vW}{\bvec{W}}
+\newcommand{\vX}{\bvec{X}}
+\newcommand{\vY}{\bvec{Y}}
+\newcommand{\vZ}{\bvec{Z}}
+
+\usepackage{subcaption}
+\newcommand{\bitem}{\item[$\bullet$]}
+
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareSymbolFont{symbols2}{LS1}{stixfrak} {m} {n}
+\DeclareMathSymbol{\operp}{\mathbin}{symbols2}{"A8}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{lipsum}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\title{
+Trace Estimation II\\
+-- Concentration Inequalities -- \\
+Lecture 6
+}
+%\subtitle{Mathematical framework, existence and exactness}
+
+\author{F. M. Faulstich}
+\date{01/26/2024}
+
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Concentration Inequalities}
+
+Wikipedia: \\
+\begin{center}
+``[...] concentration inequalities provide mathematical bounds on the probability of a random variable deviating from some value''
+\end{center}
+\pause 
+\begin{itemize}
+    \bitem Markov's inequality:\\
+Let $X$ be a nonnegative random variable and $a>0$, then
+$$
+\mathbb{P} (X\geq a)\leq {\frac {\mathbb{E} (X)}{a}}.
+$$
+\bitem Chebychev's inequality:\\
+Let $X$ be a random variable with finite non-zero variance $\sigma^2$. 
+$$
+\mathbb{P}(|X-\mu |\geq k\sigma )\leq {\frac {1}{k^{2}}}\qquad \forall k >0.
+$$
+\end{itemize}
+\pause
+\begin{center}
+... What do we use them for?
+\end{center}
+\end{frame}
+
+\begin{frame}{Why concentration inequalities?}
+
+\begin{itemize}
+    \bitem Concentration inequalities can provide quantitative estimates of the likely size of the error when a randomized algorithm is executed. 
+    \pause
+    \bitem We have seen that for $X_i$ i.i.d Chebychev's inequality yields
+    $$
+    \mathbb{P}
+    \left(
+    \bigg|\frac{1}{k}\sum_{i=1}^k X_i - \mu \bigg| \geq t
+    \right)
+    \leq
+    \frac{\sigma^2}{kt^2}
+    $$
+    where $\mathbb{E}(X) = \mu$ and $\mathbb{V}(X)=\sigma^2$.
+    \pause
+    \bitem Question:\\ 
+    We want to estimate $\mu$ by $\frac{1}{k}\sum_{i=1}^k X_i$ up to an error $\varepsilon$ with a failure probability $\delta$. How many samples do we need at most?\\
+    \pause
+    The accuracy dictates $t = \varepsilon$, and 
+    $$
+    \delta = \frac{\sigma^2}{kt^2}
+    \quad \Leftrightarrow \quad 
+    k = \frac{\sigma^2}{\delta \varepsilon^2}
+    $$
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{How tight are Markov \& Chebychev?}
+
+What is the ideal scenario?\\
+~\\
+\begin{itemize}
+    \bitem Central limit theorem suggests that $\bar{X}_k$ approximates $\mathcal{N}(\mu, \sigma^2/k)$
+    \bitem So, we would like/expect a result like
+    $$
+    \mathbb{P} \left( |\bar{X}_k - \mu|\geq t \right)
+    \overset{?}{\lessapprox}
+    {\rm exp}
+    \left(
+    -\frac{k t^2}{2\sigma^2}
+    \right)
+    $$
+    (Probability of being in the tail of a Gaussian)
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Hoeffding's Inequality}
+\begin{itemize}
+    \bitem Let $X_1,...,X_k$ be i.i.d and such that $a\leq X_{i}\leq b$ almost surely. Then
+    \begin{equation*}
+    \begin{aligned}\mathbb{P} \left(
+    \bar{X}_k - \mu \geq t
+    \right)
+    &\leq {\rm exp}\left(
+    - \frac{2kt^2}{(b - a)^2}
+    \right) \\
+    \mathbb{P} \left(
+    |\bar{X}_k - \mu| \geq t
+    \right)
+    &\leq 2 {\rm exp}\left(
+    - \frac{2kt^2}{(b - a)^2}
+    \right) 
+    \end{aligned}
+    \end{equation*}
+    for all $t>0$.
+\end{itemize}
+~\\
+\begin{center}
+... We need some tools to prove this!
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Tools}
+
+\begin{itemize}
+    \bitem Cram\'er--Chernoff method:\\
+    Let $X$ be a random variable then
+    $$
+    \mathbb{P}(X \geq x)
+    \leq \min_{r> 0} \exp(-rx) \mathbb{E} (\exp(rX))
+    $$
+    \bitem Hoeffding's Lemma:\\
+    Let $X$ be a random variable with $a\leq X\leq b$. Then for all $t\in \mathbb{R}$ the momentum generating function of $X$ satisfies:
+    $$
+    \mathbb{E}(e^{tX})
+    \leq \exp\left(
+    t\mu +\frac{1}{8}t^2(b-a)^2
+    \right)
+    $$
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Proof of Hoeffding's inequality I}
+
+\begin{itemize}
+    \bitem We apply the Cram\'er-Chernoff method
+    \begin{equation*}
+    \begin{aligned}
+    \mathbb{P} \left(
+    \bar{X}_k - \mu \geq t
+    \right)
+    \leq
+    \min_{r>0}
+    \exp(-rt)
+    \prod_{i=1}^k
+    \mathbb{E}
+    \left[
+    \exp\left(r\left(\frac{X_i}{k} - \frac{\mu}{k}\right)\right)
+    \right]
+    \end{aligned}
+    \end{equation*}
+    \bitem Hoeffding's Lemma yields
+    \begin{equation*}
+    \begin{aligned}
+    \mathbb{E}
+    \left[
+    \exp\left(r\left(\frac{X}{k} - \frac{\mu}{k}\right)\right)
+    \right]
+    \leq
+    \exp\left(
+    \frac{1}{8}\frac{r^2}{k^2}(b-a)^2
+    \right)
+    \end{aligned}
+    \end{equation*}
+    \bitem Hence
+    $$
+    \mathbb{P} \left(
+    \bar{X}_k - \mu \geq t
+    \right)
+    \leq 
+    \min_{r>0}
+    \exp\left(
+    -rt +
+    \frac{1}{8}\frac{r^2}{k}(b-a)^2
+    \right)
+    $$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof of Hoeffding's inequality II}
+\begin{itemize}
+    \bitem Find
+    $$
+    \min_{r>0}\exp\left(
+    -rt +
+    \frac{1}{8}\frac{r^2}{k}(b-a)^2
+    \right)
+    \pause
+    =
+    \exp\left(
+    -
+    \frac{2t^2k}{(b-a)^2}
+    \right)
+    $$
+    \bitem Putting all together, we obtain
+    $$
+    \mathbb{P} \left(
+    \bar{X}_k - \mu \geq t
+    \right)
+    \leq 
+    \exp\left(
+    -
+    \frac{2t^2k}{(b-a)^2}
+    \right)
+    $$
+    \bitem Since
+    $$
+    \mathbb{P} \left(
+    \bar{X}_k - \mu \leq -t
+    \right)
+    =
+    \mathbb{P} \left(
+    \mu - \bar{X}_k \geq t
+    \right)
+    \leq
+    \exp\left(
+    -
+    \frac{2t^2k}{(b-a)^2}
+    \right)
+    $$
+    we get the second result
+    $$
+    \mathbb{P} \left(
+    |\bar{X}_k - \mu| \geq t
+    \right)
+    \leq 
+    2
+    \exp\left(
+    -
+    \frac{2t^2k}{(b-a)^2}
+    \right)
+    $$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Discussion of Hoeffding's Inequality}
+
+\begin{itemize}
+    \bitem Hoeffding's inequality is similar to the anticipated scenario of the central limit theorem
+    $$
+    \mathbb{P} \left( |\bar{X}_k - \mu|\geq t \right)
+    \overset{?}{\lessapprox}
+    {\rm exp}
+    \left(
+    -\frac{k t^2}{2\sigma^2}
+    \right)
+    $$
+    but it replaces $\sigma^2$ by the larger quantity $(b-a)^2/4$
+    \bitem Note that
+    $$
+    \sigma^2 \leq (b-a)^2/4
+    $$
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Berstein's Inequality}
+
+\begin{itemize}
+    \bitem Let $X_1,...,X_k$ be i.i.d and such that $|X - \mathbb{E}(X)| \leq B$ almost surely. Then
+    $$
+    \mathbb{P}\left(
+    |\bar{X}_k - \mu| \geq t
+    \right)
+    \leq 2 \exp\left( 
+    -\frac{kt^2/2}{\sigma^2 + B t/3}
+    \right)
+    $$
+    \bitem For small values of $t$ $\sigma^2$ dominates $ B t/3$ and we get what we anticipated from the CLT
+    \bitem For large $t$ we get
+    $$
+    \mathbb{P}\left(
+    |\bar{X}_k - \mu| \geq t
+    \right)
+    \overset{{\rm large~ t}}{\lessapprox} 2 \exp\left( 
+    -\frac{kt3}{ 2B}
+    \right)
+    $$
+    which is exponentially small in $t$ rather than $t^2$.
+\end{itemize}
+
+\begin{center}
+$\Rightarrow$ For small $t$, Berstein's inequality is tighter than Hoeffding's,\\ for large $t$ however Hoeffding's is tighter.     
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}{Application to the trace estimator}
+
+\begin{itemize}
+    \bitem Let $X = \bomega^* \vA \bomega$ with $\bomega$ Rademacher and $\vA \in \mathbb{H}_n$.\\
+    Then 
+    $$
+    \mathbb{V}(\bomega^* \vA \bomega)
+    =
+    4 \sum_{i < j} (\vA)_{i,j}^2
+    \leq 
+    2 \Vert \vA \Vert_F^2
+    $$
+    and Chebychev yields
+    $$
+    \mathbb{P}(|\bar{X}_k - {\rm Tr}(\vA)|\geq t)
+    \leq \frac{2\Vert \vA \Vert_F^2}{kt^2}
+    $$
+    \bitem Using Bernstein's inequality we can establish 
+    $$
+    \mathbb{P}(|\bar{X}_k - {\rm Tr}(\vA)|\geq t)
+    \leq 2 \exp\left(
+    -\frac{kt^2}{3\Vert \vA \Vert_F^2 + 4tn \Vert \vA \Vert /3}
+    \right)
+    $$
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{More Concentration inequalities}
+
+\begin{itemize}
+    \bitem Vysochanskij–Petunin inequality
+    \bitem Paley–Zygmund inequality
+    \bitem Cantelli's inequality
+    \bitem Azuma's inequality
+    \bitem McDiarmid's inequality
+    \item[] $\vdots$
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{A prior error estimates for trace estimator}
+
+Gratton and Titley-Peloquin (2018):
+\begin{itemize}
+    \bitem Let $\vA \in \mathbb{H}_n(\mathbb{R})$ and $0 \preccurlyeq \vA$ be non-zero. For $\tau > 1$ and $k\leq n$, the Girard--Hutchinson estimator with $\bomega \sim \mathcal{N}(\bzero, \vI)$ then fulfills
+    \begin{align*}
+    \mathbb{P}(\bar{X}_k \geq \tau {\rm Tr}(\vA))
+    &\leq \exp\left(-\frac{1}{2} k ~{\rm intdim}(\vA) (\sqrt{\tau} -1 )^2\right)\\
+    \mathbb{P}(\bar{X}_k \geq \tau^{-1} {\rm Tr}(\vA))
+    &\leq \exp\left(-\frac{1}{4} k ~{\rm intdim}(\vA) (\tau^{-1} -1 )^2\right)
+    \end{align*}
+\end{itemize}
+    
+\end{frame}
+
+
+\end{document}
+
+
+
+

@@ -1,0 +1,277 @@
+\documentclass{beamer}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usefonttheme{serif}
+\usepackage{dsfont}
+\setbeamersize{text margin left=5pt, text margin right=5pt}
+
+\newcommand{\bgk}[1]{\boldsymbol{#1}}
+
+\newcommand{\bzero}{\bgk{0}}
+\newcommand{\bone}{\bgk{1}}
+
+\newcommand{\balpha}{\bgk{\alpha}}
+\newcommand{\bnu}{\bgk{\nu}}
+\newcommand{\bbeta}{\bgk{\beta}}
+\newcommand{\bxi}{\bgk{\xi}}
+\newcommand{\bgamma}{\bgk{\gamma}} 
+\newcommand{\bo}{\bgk{o }}
+\newcommand{\bdelta}{\bgk{\delta}}
+\newcommand{\bpi}{\bgk{\pi}}
+\newcommand{\bepsilon}{\bgk{\epsilon}} 
+\newcommand{\bvarepsilon}{\bgk{\varepsilon}} 
+\newcommand{\brho}{\bgk{\rho}}
+\newcommand{\bvarrho}{\bgk{\varrho}}
+\newcommand{\bzeta}{\bgk{\zeta}}
+\newcommand{\bsigma}{\bgk{\sigma}}
+\newcommand{\boldeta}{\bgk{\eta}}
+\newcommand{\btay}{\bgk{\tau}}
+\newcommand{\btheta}{\bgk{\theta}}
+\newcommand{\bvertheta}{\bgk{\vartheta}}
+\newcommand{\bupsilon}{\bgk{\upsilon}}
+\newcommand{\biota}{\bgk{\iota}}
+\newcommand{\bphi}{\bgk{\phi}}
+\newcommand{\bvarphi}{\bgk{\varphi}}
+\newcommand{\bkappa}{\bgk{\kappa}}
+\newcommand{\bchi}{\bgk{\chi}}
+\newcommand{\blambda}{\bgk{\lambda}}
+\newcommand{\bpsi}{\bgk{\psi}}
+\newcommand{\bmu}{\bgk{\mu}}
+\newcommand{\bomega}{\bgk{\omega}}
+
+\newcommand{\bA}{\bgk{A}}
+\newcommand{\bDelta}{\bgk{\Delta}}
+\newcommand{\bLambda}{\bgk{\Lambda}}
+\newcommand{\bSigma}{\bgk{\Sigma}}
+\newcommand{\bOmega}{\bgk{\Omega}}
+
+\newcommand{\bvec}[1]{\mathbf{#1}}
+
+\newcommand{\va}{\bvec{a}}
+\newcommand{\vb}{\bvec{b}}
+\newcommand{\vc}{\bvec{c}}
+\newcommand{\vd}{\bvec{d}}
+\newcommand{\ve}{\bvec{e}}
+\newcommand{\vf}{\bvec{f}}
+\newcommand{\vg}{\bvec{g}}
+\newcommand{\vh}{\bvec{h}}
+\newcommand{\vi}{\bvec{i}}
+\newcommand{\vj}{\bvec{j}}
+\newcommand{\vk}{\bvec{k}}
+\newcommand{\vl}{\bvec{l}}
+\newcommand{\vm}{\bvec{m}}
+\newcommand{\vn}{\bvec{n}}
+\newcommand{\vo}{\bvec{o}}
+\newcommand{\vp}{\bvec{p}}
+\newcommand{\vq}{\bvec{q}}
+\newcommand{\vr}{\bvec{r}}
+\newcommand{\vs}{\bvec{s}}
+\newcommand{\vt}{\bvec{t}}
+\newcommand{\vu}{\bvec{u}}
+\newcommand{\vv}{\bvec{v}}
+\newcommand{\vw}{\bvec{w}}
+\newcommand{\vx}{\bvec{x}}
+\newcommand{\vy}{\bvec{y}}
+\newcommand{\vz}{\bvec{z}}
+
+\newcommand{\vA}{\bvec{A}}
+\newcommand{\vB}{\bvec{B}}
+\newcommand{\vC}{\bvec{C}}
+\newcommand{\vD}{\bvec{D}}
+\newcommand{\vE}{\bvec{E}}
+\newcommand{\vF}{\bvec{F}}
+\newcommand{\vG}{\bvec{G}}
+\newcommand{\vH}{\bvec{H}}
+\newcommand{\vI}{\bvec{I}}
+\newcommand{\vJ}{\bvec{J}}
+\newcommand{\vK}{\bvec{K}}
+\newcommand{\vL}{\bvec{L}}
+\newcommand{\vM}{\bvec{M}}
+\newcommand{\vN}{\bvec{N}}
+\newcommand{\vO}{\bvec{O}}
+\newcommand{\vP}{\bvec{P}}
+\newcommand{\vQ}{\bvec{Q}}
+\newcommand{\vR}{\bvec{R}}
+\newcommand{\vS}{\bvec{S}}
+\newcommand{\vT}{\bvec{T}}
+\newcommand{\vU}{\bvec{U}}
+\newcommand{\vV}{\bvec{V}}
+\newcommand{\vW}{\bvec{W}}
+\newcommand{\vX}{\bvec{X}}
+\newcommand{\vY}{\bvec{Y}}
+\newcommand{\vZ}{\bvec{Z}}
+
+\usepackage{subcaption}
+\newcommand{\bitem}{\item[$\bullet$]}
+
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareSymbolFont{symbols2}{LS1}{stixfrak} {m} {n}
+\DeclareMathSymbol{\operp}{\mathbin}{symbols2}{"A8}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{lipsum}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\title{
+Trace Estimation I\\
+-- Sampling -- \\
+Lecture 5
+}
+%\subtitle{Mathematical framework, existence and exactness}
+
+\author{F. M. Faulstich}
+\date{01/23/2024}
+
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Trace of a matrix}
+
+\begin{itemize}
+    \bitem Given $\vA \in \mathbb{F}^{n\times n}$, we want to compute
+$$
+{\rm Tr}(\vA) = \sum_{i=1}^{n} (\vA)_{ii} 
+$$
+\bitem Not a problem if we have inexpensive access to matrix elements
+\bitem But what if we do not have that access?\\
+$\rightarrow$ We might only have $\vu \mapsto \vA \vu$ implicitly
+\end{itemize}
+
+ 
+
+Idea:\\
+\begin{center}
+Construct an unbiased estimator for the trace and then average independent copies to reduce the variance of the estimator. \\
+\pause
+(... Monte-Carlo)
+\end{center}
+    
+\end{frame}
+
+
+\begin{frame}{Girard--Hutchinson Estimator}
+We assume $\vA \in \mathbb{H}_n$, $0 \preccurlyeq \vA$, and ${\rm Tr}(\vA) \neq 0$.
+\begin{itemize}
+    \bitem Consider a random test vector $\bomega\in\mathbb{F}^n$ with $\mathbb{E}(\bomega \bomega^*) = \vI$\\
+    we say $\bomega$ is isotropic.
+    \bitem Then $X = \bomega^* (\vA \bomega)$ satisfies
+    $$
+    \mathbb{E}(X) = {\rm Tr}(\vA)
+    $$
+    $\Rightarrow$ $X$ is an unbiased estimator of the trace.
+    \pause 
+    \bitem [Girard--Hutchinson Estimator] Reduce the variance by taking $k$ copies
+    $$
+    \bar{X}_k = \frac{1}{k}\sum_{i=1}^k X_i
+    $$
+    where $X_i \sim X$ are i.i.d.\\
+    $\rightarrow$ By linearity $\mathbb{E}(\bar{X}_k) = {\rm Tr}(\vA)$\\
+    $\rightarrow$ But the variance decreases: $\mathbb{V}(\bar{X}_k) = \frac{1}{k}\mathbb{V}(X)$
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Algorithm I (na\"ive  Monte-Carlo Estimator)}
+
+\begin{itemize}
+    \bitem Input: $\vA\in\mathbb{H}_n$, $k \in \mathbb{N}$
+    \bitem for i=1:k\\
+    $\qquad$ Draw isotropic $\bomega_i \in \mathbb{F}^n$\\
+    $\qquad$ Compute $X_i= \bomega_i^* \vA \bomega_i$
+    \bitem Compute trace estimator $\bar{X}_k = k^{-1}\sum_{i=1}^k X_i$
+    \bitem Compute \underline{sample variance} $S_k = (k-1)^{-1}\sum_{i=1}^k (X_i - \bar{X}_k)^2$
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Cost and Variance bounds}
+
+Cost:
+\begin{itemize}
+    \bitem Simulate $k$ independent copies $\bomega_i$
+    \bitem Perform $k$ matrix vector products
+    \bitem Perform $\mathcal{O}(kn)$ additional operations
+\end{itemize}
+\begin{center}
+Note that with $n$ vector multiplications we can compute ${\rm Tr} (\vA)$ exactly!     
+
+\begin{itemize}
+    \bitem [Girard 1989] Consider $\bomega \sim \mathcal{N}(\bzero, \vI)$  then
+    $$
+    \mathbb{V} (\bar{X}_k)
+    =
+    \frac{2}{k}
+    \sum_{i,j=1 }^n |\vA_{ij}|^2
+    = 
+    \frac{2}{k} \Vert \vA \Vert_F^2
+    \leq 
+    \frac{2}{k} \Vert \vA \Vert {\rm Tr}(\vA)
+    $$
+    \bitem [Hutchinson 1990] Consider $\bomega \sim \mathcal{U}\{\pm 1\}^n$ (Rademacher r.v.) then 
+    $$
+    \mathbb{V} (\bar{X}_k)
+    =
+    \frac{4}{k}
+    \sum_{1\leq i<j\leq n } |\vA_{ij}|^2
+    < 
+    \frac{2}{k} \Vert \vA \Vert_F^2
+    \leq 
+    \frac{2}{k} \Vert \vA \Vert {\rm Tr}(\vA)
+    $$
+\end{itemize}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}{{\it a priori} Error Estimates}
+
+Chebychev's inequality:
+$$
+\mathbb{P}(|\bar{X}_k - {\rm Tr}(\vA)| \geq t)
+\leq
+\frac{\mathbb{V}(X)}{kt^2} \qquad \forall t > 0 
+$$
+The specific trace estimator will determine $\mathbb{V}(X)$:
+\begin{itemize}
+    \bitem [Girard 1989] $\bomega \sim \mathcal{N}(0,\vI)$
+    $$
+    \mathbb{P}(|\bar{X}_k - {\rm Tr}(\vA)| \geq t {\rm Tr}(\vA))
+    \leq
+    \frac{2}{k  t^2 {\rm intdim}(\vA)}
+    $$
+    The bound improves as the intrinsic dimension of $\vA$ increases.
+    \bitem Much stronger bounds can be obtained when exponential concentration inequalities are used!\\
+    (Cram\'er--Chernoff method)
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}
+
+
+
+
