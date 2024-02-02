@@ -1,0 +1,191 @@
+\documentclass[11pt]{article}
+
+\newcommand{\bgk}[1]{\boldsymbol{#1}}
+
+\newcommand{\bzero}{\bgk{0}}
+\newcommand{\bone}{\bgk{1}}
+
+\newcommand{\balpha}{\bgk{\alpha}}
+\newcommand{\bnu}{\bgk{\nu}}
+\newcommand{\bbeta}{\bgk{\beta}}
+\newcommand{\bxi}{\bgk{\xi}}
+\newcommand{\bgamma}{\bgk{\gamma}} 
+\newcommand{\bo}{\bgk{o }}
+\newcommand{\bdelta}{\bgk{\delta}}
+\newcommand{\bpi}{\bgk{\pi}}
+\newcommand{\bepsilon}{\bgk{\epsilon}} 
+\newcommand{\bvarepsilon}{\bgk{\varepsilon}} 
+\newcommand{\brho}{\bgk{\rho}}
+\newcommand{\bvarrho}{\bgk{\varrho}}
+\newcommand{\bzeta}{\bgk{\zeta}}
+\newcommand{\bsigma}{\bgk{\sigma}}
+\newcommand{\boldeta}{\bgk{\eta}}
+\newcommand{\btay}{\bgk{\tau}}
+\newcommand{\btheta}{\bgk{\theta}}
+\newcommand{\bvertheta}{\bgk{\vartheta}}
+\newcommand{\bupsilon}{\bgk{\upsilon}}
+\newcommand{\biota}{\bgk{\iota}}
+\newcommand{\bphi}{\bgk{\phi}}
+\newcommand{\bvarphi}{\bgk{\varphi}}
+\newcommand{\bkappa}{\bgk{\kappa}}
+\newcommand{\bchi}{\bgk{\chi}}
+\newcommand{\blambda}{\bgk{\lambda}}
+\newcommand{\bpsi}{\bgk{\psi}}
+\newcommand{\bmu}{\bgk{\mu}}
+\newcommand{\bomega}{\bgk{\omega}}
+
+\newcommand{\bA}{\bgk{A}}
+\newcommand{\bDelta}{\bgk{\Delta}}
+\newcommand{\bLambda}{\bgk{\Lambda}}
+
+\newcommand{\bvec}[1]{\mathbf{#1}}
+
+\newcommand{\va}{\bvec{a}}
+\newcommand{\vb}{\bvec{b}}
+\newcommand{\vc}{\bvec{c}}
+\newcommand{\vd}{\bvec{d}}
+\newcommand{\ve}{\bvec{e}}
+\newcommand{\vf}{\bvec{f}}
+\newcommand{\vh}{\bvec{h}}
+\newcommand{\vi}{\bvec{i}}
+\newcommand{\vj}{\bvec{j}}
+\newcommand{\vk}{\bvec{k}}
+\newcommand{\vl}{\bvec{l}}
+\newcommand{\vm}{\bvec{m}}
+\newcommand{\vn}{\bvec{n}}
+\newcommand{\vo}{\bvec{o}}
+\newcommand{\vp}{\bvec{p}}
+\newcommand{\vq}{\bvec{q}}
+\newcommand{\vr}{\bvec{r}}
+\newcommand{\vs}{\bvec{s}}
+\newcommand{\vt}{\bvec{t}}
+\newcommand{\vu}{\bvec{u}}
+\newcommand{\vv}{\bvec{v}}
+\newcommand{\vw}{\bvec{w}}
+\newcommand{\vx}{\bvec{x}}
+\newcommand{\vy}{\bvec{y}}
+\newcommand{\vz}{\bvec{z}}
+
+\newcommand{\vA}{\bvec{A}}
+\newcommand{\vB}{\bvec{B}}
+\newcommand{\vC}{\bvec{C}}
+\newcommand{\vD}{\bvec{D}}
+\newcommand{\vE}{\bvec{E}}
+\newcommand{\vF}{\bvec{F}}
+\newcommand{\vH}{\bvec{H}}
+\newcommand{\vI}{\bvec{I}}
+\newcommand{\vJ}{\bvec{J}}
+\newcommand{\vK}{\bvec{K}}
+\newcommand{\vL}{\bvec{L}}
+\newcommand{\vM}{\bvec{M}}
+\newcommand{\vN}{\bvec{N}}
+\newcommand{\vO}{\bvec{O}}
+\newcommand{\vP}{\bvec{P}}
+\newcommand{\vQ}{\bvec{Q}}
+\newcommand{\vR}{\bvec{R}}
+\newcommand{\vS}{\bvec{S}}
+\newcommand{\vT}{\bvec{T}}
+\newcommand{\vU}{\bvec{U}}
+\newcommand{\vV}{\bvec{V}}
+\newcommand{\vW}{\bvec{W}}
+\newcommand{\vX}{\bvec{X}}
+\newcommand{\vY}{\bvec{Y}}
+\newcommand{\vZ}{\bvec{Z}}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\usepackage{calc}
+\usepackage{geometry}
+ \geometry{
+ letterpaper,
+ left=30mm,
+ right=30mm,
+ top=30mm,
+ bottom=20mm,
+ }
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{exercise}[theorem]{Exercise}
+
+\usepackage{listings}
+\lstset{
+basicstyle=\footnotesize\ttfamily,
+columns=flexible,
+breaklines=true,
+commentstyle=\color{red},
+keywordstyle=\color{black}\bfseries,
+keepspaces=true
+}
+
+\begin{document}
+
+\begin{flushleft}
+F.M. Faulstich \hfill {\large\bf Math 6590: Homework assignment 2} \hfill {\bf Due:} Friday Feb. 16, 2024.\\
+\end{flushleft}
+
+
+\begin{exercise}
+Suppose you have a fair coin (i.e., the probability of heads (H) is the same as tails (T), which is 0.5). The experiment is to flip the coin $n$ times, and we denote the random variable representing the number of heads by $X$. Note that this is a Bernoulli process, i.e., the individual flips are modeled by a Bernoulli random variable that takes the value 1 (i.e. heads) with probability 0.5, and the value 0 (i.e. tails) with probability 0.5, and 
+$$
+X = \sum_{i=1}^n X_i.
+$$
+You are interested in estimating the probability that the number of heads is significantly higher or lower than the expected number, i.e., estimating the tail of the distribution.
+\begin{itemize}
+    \item[a)] What is the expected number of heads in $n$ flips, i.e., $\mathbb{E}(X)$?
+    \item[b)] Chernoff bound:
+    \begin{itemize}
+        \item[i)] Use the Chernoff bound to estimate the probability that the number of heads is at least $(1 + \delta)\mathbb{E}[X]$.
+    \item[ii)] Calculate this probability for $n = 100$ and $\delta = 0.1$. Interpret your results.
+    \end{itemize}
+    
+\end{itemize}
+
+\end{exercise}
+
+\begin{exercise}
+Consider 
+$$
+g(u)
+=
+\gamma u + \ln \left(1 + \gamma - \gamma e^{u}\right)
+$$
+with $\gamma = \frac{a}{b-a}$.
+Prove that 
+$$
+g''(u) \leq \frac{1}{4}\qquad {\rm for~} u>0
+$$
+\end{exercise}
+
+\begin{exercise}
+~\\
+\begin{itemize}
+\item[a)] Implement the Girard--Hutchinson estimator
+\item[b)] Experiment with the Girard--Hutchinson estimator. Choose $\bomega_i$ to be:
+\begin{itemize}
+    \item[i)] Gaussian: The entries of of each $\bomega_i$ are i.i.d.~$\mathcal{N}(0,1)$
+    \item[ii)] Rademacher: The entries of of each $\bomega_i$ are i.i.d.~Rademacher
+    \item[iii)] Sphere: The entries of of each $\bomega_i$ are i.i.d.~uniformly sampled from a sphere of radius $\sqrt{n}$, i.e., $\bomega_i \sim \mathcal{U}\{\vx \in \mathbb{R}^n~|~ \vx^\top \vx = n\}$ where $\mathcal{U}$ is the uniform distribution.
+\end{itemize}
+Generate $\vA \in \mathbb{R}^{1000\times 1000}$ with eigenvalues uniformly distributed between 0.9 and 1.1 with a (Haar orthogonal) random matrix of eigenvectors. Investigate the variance $\mathbb{V}(\bomega^* \vA \bomega)$ for the cases i)--iii), what do you observe, and which random variable would you use in computations?\\
+Note: You may find it useful to normalize the Variance by ${\rm Tr}(\vA)$
+\item[c)] Implement the remaining trace estimators introduced in class:
+\begin{itemize}
+    \item[ii)] The {\rm H\footnotesize{UTCH\texttt{++}}} estimator
+    \item[iii)] The {\rm XT{\footnotesize RACE}} Estimator
+    \item[iv)] The {\rm XN{\footnotesize YS}T{\footnotesize RACE}} Estimator
+\end{itemize}
+\item[d)] Fix the random seed and compute that Girard--Hutchinson, {\rm XT{\footnotesize RACE}} and  {\rm XN{\footnotesize YS}T{\footnotesize RACE}} are indeed exchangeable, whereas {\rm H\footnotesize{UTCH\texttt{++}}} is not.
+\item[e)] Reproduce the Figure~1 in~\cite{epperly2024xtrace}
+\end{itemize}
+
+\end{exercise}
+
+
+
+\bibliographystyle{plain} 
+\bibliography{lib.bib} 
+
+\end{document}
