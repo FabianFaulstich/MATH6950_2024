@@ -1,0 +1,516 @@
+\documentclass{beamer}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usefonttheme{serif}
+\usepackage{dsfont}
+\setbeamersize{text margin left=5pt, text margin right=5pt}
+
+\newcommand{\bgk}[1]{\boldsymbol{#1}}
+
+\newcommand{\bzero}{\bgk{0}}
+\newcommand{\bone}{\bgk{1}}
+
+\newcommand{\balpha}{\bgk{\alpha}}
+\newcommand{\bnu}{\bgk{\nu}}
+\newcommand{\bbeta}{\bgk{\beta}}
+\newcommand{\bxi}{\bgk{\xi}}
+\newcommand{\bgamma}{\bgk{\gamma}} 
+\newcommand{\bo}{\bgk{o }}
+\newcommand{\bdelta}{\bgk{\delta}}
+\newcommand{\bpi}{\bgk{\pi}}
+\newcommand{\bepsilon}{\bgk{\epsilon}} 
+\newcommand{\bvarepsilon}{\bgk{\varepsilon}} 
+\newcommand{\brho}{\bgk{\rho}}
+\newcommand{\bvarrho}{\bgk{\varrho}}
+\newcommand{\bzeta}{\bgk{\zeta}}
+\newcommand{\bsigma}{\bgk{\sigma}}
+\newcommand{\boldeta}{\bgk{\eta}}
+\newcommand{\btay}{\bgk{\tau}}
+\newcommand{\btheta}{\bgk{\theta}}
+\newcommand{\bvertheta}{\bgk{\vartheta}}
+\newcommand{\bupsilon}{\bgk{\upsilon}}
+\newcommand{\biota}{\bgk{\iota}}
+\newcommand{\bphi}{\bgk{\phi}}
+\newcommand{\bvarphi}{\bgk{\varphi}}
+\newcommand{\bkappa}{\bgk{\kappa}}
+\newcommand{\bchi}{\bgk{\chi}}
+\newcommand{\blambda}{\bgk{\lambda}}
+\newcommand{\bpsi}{\bgk{\psi}}
+\newcommand{\bmu}{\bgk{\mu}}
+\newcommand{\bomega}{\bgk{\omega}}
+
+\newcommand{\bA}{\bgk{A}}
+\newcommand{\bDelta}{\bgk{\Delta}}
+\newcommand{\bLambda}{\bgk{\Lambda}}
+\newcommand{\bSigma}{\bgk{\Sigma}}
+\newcommand{\bOmega}{\bgk{\Omega}}
+
+\newcommand{\bvec}[1]{\mathbf{#1}}
+
+\newcommand{\va}{\bvec{a}}
+\newcommand{\vb}{\bvec{b}}
+\newcommand{\vc}{\bvec{c}}
+\newcommand{\vd}{\bvec{d}}
+\newcommand{\ve}{\bvec{e}}
+\newcommand{\vf}{\bvec{f}}
+\newcommand{\vg}{\bvec{g}}
+\newcommand{\vh}{\bvec{h}}
+\newcommand{\vi}{\bvec{i}}
+\newcommand{\vj}{\bvec{j}}
+\newcommand{\vk}{\bvec{k}}
+\newcommand{\vl}{\bvec{l}}
+\newcommand{\vm}{\bvec{m}}
+\newcommand{\vn}{\bvec{n}}
+\newcommand{\vo}{\bvec{o}}
+\newcommand{\vp}{\bvec{p}}
+\newcommand{\vq}{\bvec{q}}
+\newcommand{\vr}{\bvec{r}}
+\newcommand{\vs}{\bvec{s}}
+\newcommand{\vt}{\bvec{t}}
+\newcommand{\vu}{\bvec{u}}
+\newcommand{\vv}{\bvec{v}}
+\newcommand{\vw}{\bvec{w}}
+\newcommand{\vx}{\bvec{x}}
+\newcommand{\vy}{\bvec{y}}
+\newcommand{\vz}{\bvec{z}}
+
+\newcommand{\vA}{\bvec{A}}
+\newcommand{\vB}{\bvec{B}}
+\newcommand{\vC}{\bvec{C}}
+\newcommand{\vD}{\bvec{D}}
+\newcommand{\vE}{\bvec{E}}
+\newcommand{\vF}{\bvec{F}}
+\newcommand{\vG}{\bvec{G}}
+\newcommand{\vH}{\bvec{H}}
+\newcommand{\vI}{\bvec{I}}
+\newcommand{\vJ}{\bvec{J}}
+\newcommand{\vK}{\bvec{K}}
+\newcommand{\vL}{\bvec{L}}
+\newcommand{\vM}{\bvec{M}}
+\newcommand{\vN}{\bvec{N}}
+\newcommand{\vO}{\bvec{O}}
+\newcommand{\vP}{\bvec{P}}
+\newcommand{\vQ}{\bvec{Q}}
+\newcommand{\vR}{\bvec{R}}
+\newcommand{\vS}{\bvec{S}}
+\newcommand{\vT}{\bvec{T}}
+\newcommand{\vU}{\bvec{U}}
+\newcommand{\vV}{\bvec{V}}
+\newcommand{\vW}{\bvec{W}}
+\newcommand{\vX}{\bvec{X}}
+\newcommand{\vY}{\bvec{Y}}
+\newcommand{\vZ}{\bvec{Z}}
+
+\usepackage{subcaption}
+\newcommand{\bitem}{\item[$\bullet$]}
+
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareSymbolFont{symbols2}{LS1}{stixfrak} {m} {n}
+\DeclareMathSymbol{\operp}{\mathbin}{symbols2}{"A8}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{lipsum}
+
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\title{
+Multi-linear Algebra\\
+-- Tensor diagrams --\\
+Lecture 14
+}
+%\subtitle{Mathematical framework, existence and exactness}
+
+\author{F. M. Faulstich}
+\date{12/03/2024}
+
+\begin{document}
+
+\frame{\titlepage}
+
+
+\begin{frame}{The tensor space $\mathbb{R}^{n_1 \times ... \times n_d}$}
+
+\begin{itemize}
+    \bitem The map 
+    $$
+    \bchi:  \mathbb{N}_{n_1} \times ... \times \mathbb{N}_{n_d}
+    ~;~ (i_1,...,i_d) \mapsto \bchi[i_1,...,i_d]
+    $$
+    defines the tensor $\bchi \in \mathbb{R}^{n_1\times ... \times n_d}$.
+    The number $n_i$ is the $i$th dimension of $\bchi$, $ \mathbb{N}_{n_1}\times ... \times \mathbb{N}_{n_d}$ its index set and $d$ its order.
+    \bitem Tensors are a generalization of vectors and matrices:\\
+    Tensors of order one are vectors\\
+    Tensors of order two are matrices
+    \bitem Linear algebra is a special case of multi-linear algebra 
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Tensor diagrams}
+    
+\end{frame}
+
+\begin{frame}{Tensor diagrams}
+
+\begin{center}
+What can we do with tensor diagrams?
+\end{center}
+    
+\end{frame}
+
+\begin{frame}{The tensor space $\mathbb{R}^{n_1 \times ... \times n_d}$}
+
+\begin{proposition}{}
+Each space  $\mathbb{R}^{n_1 \times ... \times n_d}$ can be expressed as the $d$-fold tensor product of order one tensors 
+$$
+\mathbb{R}^{n_1 \times ... \times n_d}
+=
+\mathbb{R}^{n_1} \otimes \cdots \otimes \mathbb{R}^{n_d}
+=
+\bigotimes_{i-1}^d
+\mathbb{R}^{n_i}
+$$
+In particular, every tensor $\bchi \in \mathbb{R}^{n_1 \times ... \times n_d}$ can be expressed as a linear combination elementary tensors, i.e., 
+$$
+\bchi
+=
+\sum_j
+\vx_{1,j} \otimes \cdots \otimes \vx_{d,j}
+\qquad
+\vx_{i,j} \in \mathbb{R}^{n_i} 
+$$
+\end{proposition}
+\end{frame}
+
+\begin{frame}{Tensor product in diagrams}
+    
+\end{frame}
+
+\begin{frame}{Tensor contractions}
+Let $\vX \in \mathbb{R}^{n_1\times ... \times n_d}$ and  $\vY \in \mathbb{R}^{m_1\times ... \times m_d}$ be two tensors of order $d$ and $e$, respectively. 
+The contraction $\vX *_{\ell,k} \vY$ of the $\ell$-th mode of $\vX$ with the $k$-th mode of $\vY$ is defined elementwise as
+\begin{equation*}
+\begin{aligned}
+&\vX *_{\ell,k} \vY [i_1, . . . ,i_{\ell-1},i_{\ell+1}, . . . ,i_d, j_1, . . . , j_{k-1}, j_{k+1}, . . . , j_e]\\
+&=
+\sum_{p=1}^{n_\ell}
+\vX [i_1, . . . ,i_{\ell-1}, p,i_{\ell+1}, . . . ,i_d] \cdot Y[j_1, . . . , j_{k-1}, p, j_{k+1}, . . . , j_e].
+\end{aligned}
+\end{equation*}
+    
+\end{frame}
+
+
+\begin{frame}{Example}
+
+Consider
+$$
+\vA=
+\begin{bmatrix}
+\begin{bmatrix}
+1& 2\\
+4& 5\\
+7& 8\\
+\end{bmatrix}
+,
+\begin{bmatrix}
+1& 3\\
+5& 6\\
+7& 8\\
+\end{bmatrix}
+\end{bmatrix}
+\in \mathbb{R}^{3 \times 2 \times 2}
+$$
+Then 
+$$
+\vA *_{2,1} 
+\begin{bmatrix}
+1\\ 0    
+\end{bmatrix}
+=
+\pause
+\begin{bmatrix}
+1 & 1\\
+4 & 5\\
+7 & 7 \\
+\end{bmatrix}
+\quad
+\pause
+\quad 
+\vA *_{3,1} 
+\begin{bmatrix}
+1\\ 2 
+\end{bmatrix}
+=
+\pause
+\begin{bmatrix}
+3 & 8\\
+14 & 17\\
+21 & 24
+\end{bmatrix}
+$$
+\pause
+$$
+\vA *_{(1,2),(1,2)} 
+\begin{bmatrix}
+1 & 2\\
+2 & 2\\
+1 & 0\\
+\end{bmatrix}
+\pause
+=
+\sum_{1,2}
+\begin{bmatrix}
+\begin{bmatrix}
+1& 4\\
+8& 10\\
+7& 0\\
+\end{bmatrix}
+,
+\begin{bmatrix}
+1& 6\\
+10& 12\\
+7& 0\\
+\end{bmatrix}
+\end{bmatrix} 
+=
+\begin{bmatrix}
+30\\
+36
+\end{bmatrix}
+$$
+\pause
+$$
+\vA *_{(1,3),(1,2)} 
+\begin{bmatrix}
+1 & 2\\
+2 & 2\\
+1 & 0\\
+\end{bmatrix}
+\pause
+=
+\begin{bmatrix}
+28\\
+38
+\end{bmatrix}
+$$
+\end{frame}
+
+
+
+\begin{frame}{Tensor contraction in diagrams}
+    
+\end{frame}
+
+\begin{frame}{Frobenius scalar product}
+
+Let the real coordinate spaces $\mathbb{R}^{n_i}$ be equipped with the canonical scalar product. 
+\pause
+Then, the unique induced scalar product
+on $R^{n_1\times ... \times n_d}$ , i.e. the scalar product for which
+$$
+\left\langle
+\bigotimes_{i=1}^d \vx_i , \bigotimes_{i=1}^d \vy_i 
+\right\rangle 
+=
+\prod_{i=1}^d 
+\left\langle
+ \vx_i , \vy_i 
+\right\rangle 
+$$
+holds for all elementary tensors with $\vx_i, \vy_i \in \mathbb{R}^{n_i}$ , is the Frobenius scalar product defined as
+\begin{equation*}
+\begin{aligned}
+\langle
+\cdot, \cdot
+\rangle_F
+&:\mathbb{R}^{n_1 \times ... \times n_d} \times \mathbb{R}^{n_1 \times ... \times n_d}
+\to \mathbb{R}\\
+&(\vX, \vY)
+\mapsto
+\sum_{i_1,...,i_d} \vX[i_1,...,i_d] \vY[i_1,..,i_d]
+\end{aligned}
+\end{equation*}
+    
+\end{frame}
+
+\begin{frame}{Example}
+
+$$
+\left\langle
+\begin{bmatrix}
+1 & 2\\ 6 & 4
+\end{bmatrix}
+,
+\begin{bmatrix}
+2 & 5\\ 1 & 0
+\end{bmatrix}
+\right\rangle
+\pause
+=
+\sum_{1,2}
+\begin{bmatrix}
+2 & 10\\ 6 & 0
+\end{bmatrix}
+=
+18
+$$
+
+\begin{footnotesize}
+$$
+\left\langle
+\begin{bmatrix}
+\begin{bmatrix}
+1& 2\\
+4& 5\\
+7& 8\\
+\end{bmatrix}
+,
+\begin{bmatrix}
+1& 3\\
+5& 6\\
+7& 8\\
+\end{bmatrix}
+\end{bmatrix}
+,
+\begin{bmatrix}
+\begin{bmatrix}
+0& 1\\
+2& 3\\
+0& 0\\
+\end{bmatrix}
+,
+\begin{bmatrix}
+2& 3\\
+2& 1\\
+4& 2\\
+\end{bmatrix}
+\end{bmatrix}
+\right\rangle
+=
+\sum_{1,2,3}
+\begin{bmatrix}
+\begin{bmatrix}
+0& 2\\
+8& 15\\
+0& 0\\
+\end{bmatrix}
+,
+\begin{bmatrix}
+2& 9\\
+10& 6\\
+28& 16\\
+\end{bmatrix}
+\end{bmatrix}
+=
+96
+$$
+\end{footnotesize}
+    
+\end{frame}
+
+\begin{frame}{Scalar product in diagrams}
+    
+\end{frame}
+
+
+\begin{frame}{Vectorization}
+
+\begin{definition}{Vectorization}
+Given the bijection $\varphi : \mathbb{N}_{n_1} \times ... \times  \mathbb{N}_{n_d} \to  \mathbb{N}_{m_{\rm vec}}$ with $\mathbb{N}_{m_{\rm vec}} = n_1\cdots n_d$ the mapping 
+$$
+{\rm Vec} :  \mathbb{R}^{{n_1} \times ... \times  {n_d}} \to \mathbb{R}^{m_{\rm vec}}
+~;~
+\vX \mapsto {\rm Vec}(\vX)
+$$
+with 
+$$
+{\rm Vec}(\vX)[i]
+=
+\vX[\phi^{-1}(i)]
+$$
+\end{definition}
+
+Example: We choose $\varphi$ to be the lexicographical ordering
+$$
+\varphi
+:
+\mathbb{N}_{n_1} \times ... \times  \mathbb{N}_{n_d} \to  \mathbb{N}_{m_{\rm vec}}
+~;~
+(i_1,...,i_d)
+\mapsto
+1 + \sum_{k=1}^d (i_k -1 ) \prod_{\ell < k} n_\ell
+$$
+    
+\end{frame}
+
+\begin{frame}{Vectorization with diagrams}
+    
+\end{frame}
+
+
+\begin{frame}{Matricization}
+
+
+\begin{definition}
+Given the tensor space $ \mathbb{R}^{{n_1} \times ... \times  {n_d}}$, let $\Lambda \subseteq \{1,...,d\}$ denote a subset of the modes and let $\Lambda^c$ be its compliment.
+We define $m_1=\prod_{i\in \Lambda } n_i$ and $m_2 =\prod_{j\in \Lambda^c}$. Given a bijection
+\begin{equation*}
+\begin{aligned}
+\phi &: \mathbb{N}_{n_1} \times  \cdots \mathbb{N}_{n_d}
+\to \mathbb{N}_{m_1} \times \mathbb{N}_{m_2}\\
+&(i_1,...,i_d) \mapsto (\phi_1(i_k~|~k\in \Lambda), \phi_2(i_\ell~|~\ell \in \Lambda^c))  
+\end{aligned}
+\end{equation*}    
+The map
+\begin{equation*}
+\begin{aligned}
+{\rm MAT}_\Lambda 
+: \mathbb{R}^{n_1\times \cdots n_d} \to \mathbb{R}^{m_1\times m_2}
+~;~
+\vX \mapsto {\rm MAT}_\Lambda (\vX)
+\end{aligned}
+\end{equation*}
+where 
+$$
+{\rm MAT}_\Lambda (\vX)[i,j] 
+=
+\vX(\phi^{-1}(i,j)) 
+$$
+is called the $\Lambda$-matricization.
+
+\end{definition}
+    
+\end{frame}
+
+\begin{frame}{Matricization with diagrams}
+    
+\end{frame}
+
+
+
+\end{document}
+
+
+
+
