@@ -1,0 +1,579 @@
+\documentclass{beamer}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usefonttheme{serif}
+\usepackage{dsfont}
+\setbeamersize{text margin left=5pt, text margin right=5pt}
+
+\newcommand{\bgk}[1]{\boldsymbol{#1}}
+
+\newcommand{\bzero}{\bgk{0}}
+\newcommand{\bone}{\bgk{1}}
+
+\newcommand{\balpha}{\bgk{\alpha}}
+\newcommand{\bnu}{\bgk{\nu}}
+\newcommand{\bbeta}{\bgk{\beta}}
+\newcommand{\bxi}{\bgk{\xi}}
+\newcommand{\bgamma}{\bgk{\gamma}} 
+\newcommand{\bo}{\bgk{o }}
+\newcommand{\bdelta}{\bgk{\delta}}
+\newcommand{\bpi}{\bgk{\pi}}
+\newcommand{\bepsilon}{\bgk{\epsilon}} 
+\newcommand{\bvarepsilon}{\bgk{\varepsilon}} 
+\newcommand{\brho}{\bgk{\rho}}
+\newcommand{\bvarrho}{\bgk{\varrho}}
+\newcommand{\bzeta}{\bgk{\zeta}}
+\newcommand{\bsigma}{\bgk{\sigma}}
+\newcommand{\boldeta}{\bgk{\eta}}
+\newcommand{\btay}{\bgk{\tau}}
+\newcommand{\btheta}{\bgk{\theta}}
+\newcommand{\bvertheta}{\bgk{\vartheta}}
+\newcommand{\bupsilon}{\bgk{\upsilon}}
+\newcommand{\biota}{\bgk{\iota}}
+\newcommand{\bphi}{\bgk{\phi}}
+\newcommand{\bvarphi}{\bgk{\varphi}}
+\newcommand{\bkappa}{\bgk{\kappa}}
+\newcommand{\bchi}{\bgk{\chi}}
+\newcommand{\blambda}{\bgk{\lambda}}
+\newcommand{\bpsi}{\bgk{\psi}}
+\newcommand{\bmu}{\bgk{\mu}}
+\newcommand{\bomega}{\bgk{\omega}}
+
+\newcommand{\bA}{\bgk{A}}
+\newcommand{\bDelta}{\bgk{\Delta}}
+\newcommand{\bLambda}{\bgk{\Lambda}}
+\newcommand{\bSigma}{\bgk{\Sigma}}
+\newcommand{\bOmega}{\bgk{\Omega}}
+
+\newcommand{\bvec}[1]{\mathbf{#1}}
+
+\newcommand{\va}{\bvec{a}}
+\newcommand{\vb}{\bvec{b}}
+\newcommand{\vc}{\bvec{c}}
+\newcommand{\vd}{\bvec{d}}
+\newcommand{\ve}{\bvec{e}}
+\newcommand{\vf}{\bvec{f}}
+\newcommand{\vg}{\bvec{g}}
+\newcommand{\vh}{\bvec{h}}
+\newcommand{\vi}{\bvec{i}}
+\newcommand{\vj}{\bvec{j}}
+\newcommand{\vk}{\bvec{k}}
+\newcommand{\vl}{\bvec{l}}
+\newcommand{\vm}{\bvec{m}}
+\newcommand{\vn}{\bvec{n}}
+\newcommand{\vo}{\bvec{o}}
+\newcommand{\vp}{\bvec{p}}
+\newcommand{\vq}{\bvec{q}}
+\newcommand{\vr}{\bvec{r}}
+\newcommand{\vs}{\bvec{s}}
+\newcommand{\vt}{\bvec{t}}
+\newcommand{\vu}{\bvec{u}}
+\newcommand{\vv}{\bvec{v}}
+\newcommand{\vw}{\bvec{w}}
+\newcommand{\vx}{\bvec{x}}
+\newcommand{\vy}{\bvec{y}}
+\newcommand{\vz}{\bvec{z}}
+
+\newcommand{\vA}{\bvec{A}}
+\newcommand{\vB}{\bvec{B}}
+\newcommand{\vC}{\bvec{C}}
+\newcommand{\vD}{\bvec{D}}
+\newcommand{\vE}{\bvec{E}}
+\newcommand{\vF}{\bvec{F}}
+\newcommand{\vG}{\bvec{G}}
+\newcommand{\vH}{\bvec{H}}
+\newcommand{\vI}{\bvec{I}}
+\newcommand{\vJ}{\bvec{J}}
+\newcommand{\vK}{\bvec{K}}
+\newcommand{\vL}{\bvec{L}}
+\newcommand{\vM}{\bvec{M}}
+\newcommand{\vN}{\bvec{N}}
+\newcommand{\vO}{\bvec{O}}
+\newcommand{\vP}{\bvec{P}}
+\newcommand{\vQ}{\bvec{Q}}
+\newcommand{\vR}{\bvec{R}}
+\newcommand{\vS}{\bvec{S}}
+\newcommand{\vT}{\bvec{T}}
+\newcommand{\vU}{\bvec{U}}
+\newcommand{\vV}{\bvec{V}}
+\newcommand{\vW}{\bvec{W}}
+\newcommand{\vX}{\bvec{X}}
+\newcommand{\vY}{\bvec{Y}}
+\newcommand{\vZ}{\bvec{Z}}
+
+\usepackage{subcaption}
+\newcommand{\bitem}{\item[$\bullet$]}
+
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareSymbolFont{symbols2}{LS1}{stixfrak} {m} {n}
+\DeclareMathSymbol{\operp}{\mathbin}{symbols2}{"A8}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{lipsum}
+
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\title{
+Multi-linear Algebra\\
+-- Tucker Decomposition --\\
+Lecture 16
+}
+%\subtitle{Mathematical framework, existence and exactness}
+
+\author{F. M. Faulstich}
+\date{22/03/2024}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Recap}
+
+\pause 
+
+\begin{itemize}
+    \bitem Tensors:\\
+    high-dimensional object
+    \bitem Tensor diagrams:\\
+    graphical representation of tensor operations
+    \bitem Tensor decomposition\\
+    CP decomposition\\
+    low-rank approximation\\
+    $\rightarrow$ tensor rank?
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{CP decomposition Format}
+
+Pros:
+\pause
+\begin{itemize}
+    \bitem Provides a notion of tensor rank\\
+    CP-rank
+    \bitem Very good compression
+    \bitem Reduction of tensor algebra
+\end{itemize}
+
+Cons:
+\pause
+\begin{itemize}
+    \bitem Hard to find\\
+    $\rightarrow$ No systematic way to compute {\it a} CP decomposition
+    \bitem Difficult tensor sets:
+    \begin{equation*}
+    \mathcal{M}_{r}
+    =
+    \left\lbrace
+    \vX \in \mathbb{R}^{n_1 \times ... \times n_d}~|~
+    \text{ CP-rank} (\vX) = r
+    \right\rbrace
+    \end{equation*}
+    and 
+    \begin{equation*}
+    \mathcal{M}_{\leq r}
+    =
+    \left\lbrace
+    \vX \in \mathbb{R}^{n_1 \times ... \times n_d}~|~
+    \text{ CP-rank} (\vX) \leq r
+    \right\rbrace
+    \end{equation*}
+    are not closed.\\
+    $\rightarrow$ Not easy to optimize on. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Tucker Decomposition -- matrices}
+Recall the rank characterization:\\
+~\\
+    ``
+    $r$ is the smallest number, such that there exist $r$-dimensional subspaces $V \subseteq \mathbb{R}^m$ and $U \subseteq \mathbb{R}^n$, such that $\vA$ is an element of the induced tensor space $V \otimes U \subseteq \mathbb{R}^{m\times n}$
+    ''\\
+\pause
+~\\
+What does this mean?\\
+Let $\{\vu_i\}$ and $\{\vv_i\}$ be bases of $U$ and $V$, respectively.
+\pause
+Then
+\begin{equation*}
+\vA 
+=
+\sum_{i=1}^r
+\sigma_i \vu_i \otimes \bar{\vv}_i
+\pause
+=
+\sum_{i=1}^r
+\sigma_i \vu_i \vv_i^*
+=
+\vU \bSigma \vV^*
+\end{equation*}
+
+In the matrix case:\\
+\begin{center}
+ $V = {\rm Im}(\vA)$ and $U = \mathbb{R}^m/ {\rm ker}(\vA)$ \\
+\end{center}
+$\rightarrow$ their dimension {\bf always} coincide!
+\end{frame}
+
+\begin{frame}{Tucker Decomposition -- matrices}
+    
+\end{frame}
+
+\begin{frame}{Tucker Decomposition -- Tensors}
+
+How do we generalize this to tensors $\vA \in \mathbb{R}^{n_1\times ... \times n_d}$?\\
+~\\
+\begin{itemize}
+    \bitem Find minimal subspaces s.t. $\vA$ is an element of the induced tensor space
+    \bitem The dimensions of these subspaces may not be equal
+\end{itemize}
+~\\
+\pause
+Let $\{U_k\}_{k=1}^d$ be a collection of subsets with $U_k\subseteq \mathbb{R}^{n_k}$. \\
+\pause
+For each subspace $U_k$ we have an orthonormal basis\footnote{${\rm dim}(U_k) = r_k$} $\{\vu_{k,i}\}_{i=1}^{r_k}$ \\
+A tensor $\vA \in \bigotimes_{k=1}^d U_k$ can then be expressed as
+$$
+\vA = \sum_{i_1  = 1}^{r_1} \cdots \sum_{i_d  = 1}^{r_d}
+\vC[i_1,...,i_d] \cdot \vu_{1,i_1}\otimes \vu_{2,i_2}\otimes \cdots \otimes \vu_{d,i_1}
+$$
+\pause
+$\Rightarrow$ $\vC \in \mathbb{R}^{r_1 \times ... \times r_d}$, called the {\it core tensor}
+
+\end{frame}
+
+\begin{frame}{Tucker Decomposition -- Tensors}
+
+We may interpret 
+$$
+\vU_k = [\vu_{k,1}| ... | \vu_{k,r_k}]^\top \in \mathbb{R}^{r_k \times n_k}
+$$
+with elements
+$$
+\vU_k [i_k, j]
+=
+\vu_{k,i_k}[j]
+\qquad
+{\rm for }~
+1\leq i_k \leq r_k ~{\rm and}~1 \leq j \leq n_k
+$$
+\pause
+Then
+$$
+\vA = \vC *_{1} \vU_1 *_{2} \vU_2 ... *_{d} \vU_d
+$$
+where $*_k$ is the $k$th mode contraction of $\vC$ with $\vU_k$.\\
+\pause
+Elementwise:
+$$
+\vA[j_1,...,j_d]
+=
+\sum_{i_1,...,i_d}
+\vC[i_1,...,i_d] \vU_{1}[i_1,j_1]\cdot \vU_{2}[i_2,j_2]\cdots\vU_{d}[i_d,j_d]
+$$
+
+\end{frame}
+
+\begin{frame}{Tucker Decomposition -- Tensors}
+    
+\end{frame}
+
+\begin{frame}{Tucker rank}
+Given a Tucker decomposition
+$$
+\vA = \sum_{i_1  = 1}^{r_1} \cdots \sum_{i_d  = 1}^{r_d}
+\vC[i_1,...,i_d] \cdot \vu_{1,i_1}\otimes \vu_{2,i_2}\otimes \cdots \otimes \vu_{d,i_1}
+$$
+We call the tuple
+$$
+\vr = (r_1,r_2,...,r_d)
+$$
+the rank of the associated decomposition. \\
+\begin{center}
+The {\it Tucker rank} (T-rank) $\vr$ is the minimal $d$-tuple such that there exists a Tucker representation of $\vA$.
+\end{center}
+What does minimal mean?
+\pause
+Partial order of $d$-tuples:\\
+On the set of $d$-tuples we define the partial order $\preccurlyeq$ as
+$$
+(x_1,...,x_d) = \vx \preccurlyeq \vy = (y_1,...,y_d) \quad \Leftrightarrow \quad  x_i \leq y_i ~~\forall i  
+$$
+
+\end{frame}
+
+
+\begin{frame}{Why Tucker?}
+
+\begin{itemize}
+    \bitem Looks a bit more complicated than CP decomposition\\
+    $\rightarrow$ How to find the subspaces?\\
+    $\rightarrow$ Rank definition aligns less with what we know from matrices! 
+    \bitem Can be computed constructively\\
+    $\rightarrow$ higher-order SVD (HOSVD)
+    \bitem Tensors of bounded or fixed Tucker rank are much nicer\\
+    $\rightarrow$ Manifold structure 
+    $\rightarrow$ Closed set
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{high-order SVD}
+
+Algorithm:
+\begin{itemize}
+    \item[] Input: Target tensor $\vA$
+    \item[] Output: Core tensor $\vC$, basis matrices $\vU_k\in \mathbb{R}^{r_k\times n_k}$ for $1\leq k \leq d$
+    \item[] for $k=1:d$\\
+    $\quad $ Calculate $\Tilde{\vU}_k \bSigma_k \vV^* = {\rm SVD}(\vA^{(k)})$\\
+    $\quad $ [Recall notation: $\vA^{(k)}$ was the $k$-mode matricization]\\
+    $\quad $ $\vU_k = \Tilde{\vU}_k^\top $
+    \item[] Calculate $\vC = \vA *_{1} \vU_1^\top *_{2} \vU_2^\top ... *_{d} \vU_d^\top$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{high-order SVD}
+
+The HOSVD yields Tucker decomposition of minimal rank:\\
+~\\
+Theorem\\
+Given a tensor $\vA \in \mathbb{R}^{n_1\times ... \times n_d}$, let $\vC\in \mathbb{R}^{r_1\times ... \times r_d}$ and $\vU_k\in \mathbb{R}^{r_k\times n_k}$ for $1\leq k \leq d$ be the core and basis matrices obtained with the HOSVD. Then
+$$
+\vA = \vC *_{1} \vU_1 *_{2} \vU_2 ... *_{d} \vU_d
+$$
+is a Tucker representation of $\vA$ of minimal rank. The obtained representation rank is also the Tucker rank of $\vA$, is related to the matrix rank of the $k$th mode
+matricizations via
+$$
+\text{ T-rank}(\vA)
+=
+\left({\rm rank}(\vA^{(1)}), {\rm rank}(\vA^{(2)}),...,{\rm rank}(\vA^{(d)})\right)
+$$
+\end{frame}
+
+
+\begin{frame}{Low T-rank approximation}
+
+Ee can adjust the HOSVD to get a T-rank approximation of $\vA$ of rank $\vr'$ 
+\begin{itemize}
+    \item[] Input: Target tensor $\vA$
+    \item[] Output: Core tensor $\vC$, basis matrices $\vU_k\in \mathbb{R}^{r_k\times n_k}$ for $1\leq k \leq d$
+    \item[] Set $\vA_0 = \vA$
+    \item[] for $k=1:d$\\
+    $\quad $ Calculate rank $r'_k$-SVD: $\Tilde{\vU}_k \bSigma_k \vV_k^\top = {\rm SVD}_{r'_k}(\vA_{k-1}^{(k)})$\\
+    $\quad $ Set $\vA_k^{(k)} = \bSigma_k \vV_k^\top$\\
+    $\quad $ $\vU_k = \Tilde{\vU}_k^\top $
+    \item[] $\vC = \vA *_{1} \vU_1^\top *_{2} \vU_2^\top ... *_{d} \vU_d^\top$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{ Quasi Best Approximation}
+
+There is no Eckart-Young theorem for low T-rank approximations!\\
+~\\
+Theorem:\\
+Given a tensor $\vA \in \mathbb{R}^{n_1\times ... \times n_d}$, let $\vC\in \mathbb{R}^{r_1\times ... \times r_d}$ and $\vU_k\in \mathbb{R}^{r_k\times n_k}$ for $1\leq k \leq d$ be the core and basis matrices obtained with the rank $\vr'$-truncated HOSVD. These define a rank $\vr'$ Tucker approximation
+$$
+\vA' = \vC *_{1} \vU_1 *_{2} \vU_2 ... *_{d} \vU_d.
+$$
+The tensor $\vA'$ is a quasi-best rank $\vr'$ approximation to $\vA$, i.e., 
+$$
+\Vert 
+\vA - \vA'
+\Vert_F
+\leq 
+\sqrt{d}~
+\min
+\left\lbrace
+\Vert \vA - \vY \Vert_F~|~ \vY \in \mathbb{R}^{n_1\times ... \times n_d},~ \text{T-rank}(\vY) \preccurlyeq \vr'
+\right\rbrace
+$$
+
+\end{frame}
+
+
+\begin{frame}{The Tucker manifold}
+
+Theorem [Tucker manifold]:\\
+The set 
+\begin{equation*}
+\mathcal{M}_{r}^{\rm T}
+=
+\left\lbrace
+\vX \in \mathbb{R}^{n_1 \times ... \times n_d}~|~
+\text{ T-rank} (\vX) = r
+\right\rbrace
+\end{equation*}
+admits a manifold structure\footnote{Uschmajew \& Vandereycken. Linear Algebra and its Applications (2013)}.\\
+~\\
+\pause
+Proposition:\\
+The set
+\begin{equation*}
+\mathcal{M}_{\preccurlyeq r}^{\rm T}
+=
+\left\lbrace
+\vX \in \mathbb{R}^{n_1 \times ... \times n_d}~|~
+\text{ T-rank} (\vX) \preccurlyeq r
+\right\rbrace
+\end{equation*}
+is closed.
+\end{frame}
+
+\begin{frame}{Storage of Tucker decomposition}
+
+We store:
+\begin{itemize}
+    \bitem the core tensor $\vC \in \mathbb{R}^{r_1\times ... \times r_d}$  
+    \bitem the basis matrices $\vU_k \in \mathbb{R}^{r_k \times n_k}$ for $1\leq k \leq d$
+\end{itemize}
+
+This scales as  
+$$
+\mathcal{O}(r^d + d nr) 
+$$
+where $r = \max_i(r_i)$ and $n = \max_i (n_i)$\\
+~\\
+Note that for $r \ll n$ this is a significant reduction over $\mathcal{O}(n^d)$
+
+\end{frame}
+
+\begin{frame}{Accessing entries}
+
+One has to compute
+\begin{equation*}
+\begin{aligned}
+\vA[j_1,...,j_d]
+&=
+\left(
+\vC *_{1} \vU_1 *_{2} \vU_2 ... *_{d} \vU_d
+\right)[j_1,...,j_d]\\
+&=
+\sum_{i_1=1}^{r_1}...\sum_{i_d=1}^{r_d}
+\vC[i_1,...,i_d]  \vU_1[i_1,j_1] \vU_2[i_2,j_2] ... \vU_d[i_d,j_d]
+\end{aligned}
+\end{equation*}
+set $r = \max_i(r_i)$. \\
+~\\
+\begin{itemize}
+    \bitem Per for-loop we have $\mathcal{O}(r)$ operations
+    \bitem For $d$ nested for-loops this yields:
+    $
+    \mathcal{O}(r^d)
+    $
+    \bitem Recall: $\mathcal{O}(dr)$ for CP-decomposition
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Adding Tucker decompositions}
+\only<1>{
+Consider 
+$$
+\vX = \vC *_1 \vU_1 *_2 \vU_2... *_d \vU_d
+$$
+and 
+$$
+\bar{\vX} = 
+\bar{\vC} *_1 \bar{\vU}_1*_2  \bar{\vU}_2 ...  *_d \bar{\vU}_d
+$$
+Define
+$$
+\vV_k = 
+\begin{bmatrix}
+\vU_k \\
+\bar{\vU}_k
+\end{bmatrix}
+\in \mathbb{R}^{(r_k + \bar{r}_k) \times n_k }
+$$
+and
+$$
+\vD[i_1,...,i_d]
+=
+\left\lbrace
+\begin{aligned}
+&\vC [i_1,...,i_d] &&{\rm if}~i_\ell \leq r_\ell ~\forall \ell\\
+&\bar{\vC} [i_1-r_1,...,i_d-r_d] &&{\rm if}~i_\ell > r_\ell ~\forall \ell\\
+&0 &&{\rm else}\\
+\end{aligned}
+\right.
+$$
+}
+
+\only<2>{
+Then
+\begin{equation*}
+\begin{aligned}
+(\vX + \bar{\vX}) [j_1,...,j_d]
+&=
+\sum_{i_1 = 1}^{r_1} ... \sum_{i_d = 1}^{r_d}
+\vC[i_1,...,i_d] \vU_1[i_1,j_1]\cdots \vU_d[i_d,j_d]\\
+&\quad +
+\sum_{i_1 = 1}^{\bar{r}_1} ... \sum_{i_d = 1}^{\bar{r}_d}
+\bar{\vC}[i_1,...,i_d] \bar{\vU}_1[i_1,j_1]\cdots \bar{\vU}_d[i_d,j_d]\\
+&=
+\sum_{i_1 = 1}^{r_1+\bar{r}_1} ... \sum_{i_d = 1}^{r_d+\bar{r}_d}
+\vD[i_1,...,i_d] \vV_1[i_1,j_1]\cdots \vV_d[i_d,j_d]
+\end{aligned}
+\end{equation*}
+
+Setting $r = \max_i (r_i)$ and $\bar{r} = \max_i (\bar{r}_i)$\\
+The storage scales as
+$$
+\mathcal{O}\left(
+(r+ \bar{r})^d + dn(r+ \bar{r})
+\right)
+$$
+and evaluating elements scales 
+$$
+\mathcal{O}\left(
+(r+ \bar{r})^d
+\right)
+$$
+}
+    
+\end{frame}
+
+\begin{frame}{Other operations}
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{c|ccc}
+	Operation & Tucker & CP & Tensor\\
+        \hline
+         Had. Prod. & $\mathcal{O}(ndr\bar{r} + r^d \bar{r}^d)$ & $\mathcal{O}(ndr\bar{r})$ & $\mathcal{O}(n^d)$\\
+         Frob. In. Prod. & $\mathcal{O}(ndr\bar{r} + dr \bar{r}^d +r^d)$  & $\mathcal{O}(ndr\bar{r})$ & $\mathcal{O}(n^d)$\\ 
+	 Frob. Norm & $\mathcal{O}(r^d)$ & $\mathcal{O}(ndr^2)$ & $\mathcal{O}(n^d)$\\
+	 $k$-mode Prod. & $\mathcal{O}(mnr + mr^2 + r^{d+1})$ & $\mathcal{O}((d+m)nr)$ & $\mathcal{O}(n^dm)$\
+    \end{tabular}
+\end{table}
+    
+\end{frame}
+
+
+\end{document}
+
+
+
+

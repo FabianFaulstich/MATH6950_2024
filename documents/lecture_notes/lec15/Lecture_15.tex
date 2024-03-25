@@ -1,0 +1,636 @@
+\documentclass{beamer}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usefonttheme{serif}
+\usepackage{dsfont}
+\setbeamersize{text margin left=5pt, text margin right=5pt}
+
+\newcommand{\bgk}[1]{\boldsymbol{#1}}
+
+\newcommand{\bzero}{\bgk{0}}
+\newcommand{\bone}{\bgk{1}}
+
+\newcommand{\balpha}{\bgk{\alpha}}
+\newcommand{\bnu}{\bgk{\nu}}
+\newcommand{\bbeta}{\bgk{\beta}}
+\newcommand{\bxi}{\bgk{\xi}}
+\newcommand{\bgamma}{\bgk{\gamma}} 
+\newcommand{\bo}{\bgk{o }}
+\newcommand{\bdelta}{\bgk{\delta}}
+\newcommand{\bpi}{\bgk{\pi}}
+\newcommand{\bepsilon}{\bgk{\epsilon}} 
+\newcommand{\bvarepsilon}{\bgk{\varepsilon}} 
+\newcommand{\brho}{\bgk{\rho}}
+\newcommand{\bvarrho}{\bgk{\varrho}}
+\newcommand{\bzeta}{\bgk{\zeta}}
+\newcommand{\bsigma}{\bgk{\sigma}}
+\newcommand{\boldeta}{\bgk{\eta}}
+\newcommand{\btay}{\bgk{\tau}}
+\newcommand{\btheta}{\bgk{\theta}}
+\newcommand{\bvertheta}{\bgk{\vartheta}}
+\newcommand{\bupsilon}{\bgk{\upsilon}}
+\newcommand{\biota}{\bgk{\iota}}
+\newcommand{\bphi}{\bgk{\phi}}
+\newcommand{\bvarphi}{\bgk{\varphi}}
+\newcommand{\bkappa}{\bgk{\kappa}}
+\newcommand{\bchi}{\bgk{\chi}}
+\newcommand{\blambda}{\bgk{\lambda}}
+\newcommand{\bpsi}{\bgk{\psi}}
+\newcommand{\bmu}{\bgk{\mu}}
+\newcommand{\bomega}{\bgk{\omega}}
+
+\newcommand{\bA}{\bgk{A}}
+\newcommand{\bDelta}{\bgk{\Delta}}
+\newcommand{\bLambda}{\bgk{\Lambda}}
+\newcommand{\bSigma}{\bgk{\Sigma}}
+\newcommand{\bOmega}{\bgk{\Omega}}
+
+\newcommand{\bvec}[1]{\mathbf{#1}}
+
+\newcommand{\va}{\bvec{a}}
+\newcommand{\vb}{\bvec{b}}
+\newcommand{\vc}{\bvec{c}}
+\newcommand{\vd}{\bvec{d}}
+\newcommand{\ve}{\bvec{e}}
+\newcommand{\vf}{\bvec{f}}
+\newcommand{\vg}{\bvec{g}}
+\newcommand{\vh}{\bvec{h}}
+\newcommand{\vi}{\bvec{i}}
+\newcommand{\vj}{\bvec{j}}
+\newcommand{\vk}{\bvec{k}}
+\newcommand{\vl}{\bvec{l}}
+\newcommand{\vm}{\bvec{m}}
+\newcommand{\vn}{\bvec{n}}
+\newcommand{\vo}{\bvec{o}}
+\newcommand{\vp}{\bvec{p}}
+\newcommand{\vq}{\bvec{q}}
+\newcommand{\vr}{\bvec{r}}
+\newcommand{\vs}{\bvec{s}}
+\newcommand{\vt}{\bvec{t}}
+\newcommand{\vu}{\bvec{u}}
+\newcommand{\vv}{\bvec{v}}
+\newcommand{\vw}{\bvec{w}}
+\newcommand{\vx}{\bvec{x}}
+\newcommand{\vy}{\bvec{y}}
+\newcommand{\vz}{\bvec{z}}
+
+\newcommand{\vA}{\bvec{A}}
+\newcommand{\vB}{\bvec{B}}
+\newcommand{\vC}{\bvec{C}}
+\newcommand{\vD}{\bvec{D}}
+\newcommand{\vE}{\bvec{E}}
+\newcommand{\vF}{\bvec{F}}
+\newcommand{\vG}{\bvec{G}}
+\newcommand{\vH}{\bvec{H}}
+\newcommand{\vI}{\bvec{I}}
+\newcommand{\vJ}{\bvec{J}}
+\newcommand{\vK}{\bvec{K}}
+\newcommand{\vL}{\bvec{L}}
+\newcommand{\vM}{\bvec{M}}
+\newcommand{\vN}{\bvec{N}}
+\newcommand{\vO}{\bvec{O}}
+\newcommand{\vP}{\bvec{P}}
+\newcommand{\vQ}{\bvec{Q}}
+\newcommand{\vR}{\bvec{R}}
+\newcommand{\vS}{\bvec{S}}
+\newcommand{\vT}{\bvec{T}}
+\newcommand{\vU}{\bvec{U}}
+\newcommand{\vV}{\bvec{V}}
+\newcommand{\vW}{\bvec{W}}
+\newcommand{\vX}{\bvec{X}}
+\newcommand{\vY}{\bvec{Y}}
+\newcommand{\vZ}{\bvec{Z}}
+
+\usepackage{subcaption}
+\newcommand{\bitem}{\item[$\bullet$]}
+
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareSymbolFont{symbols2}{LS1}{stixfrak} {m} {n}
+\DeclareMathSymbol{\operp}{\mathbin}{symbols2}{"A8}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{lipsum}
+
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\title{
+Multi-linear Algebra\\
+-- Tensor Ranks \& CP decomposition--\\
+Lecture 15
+}
+%\subtitle{Mathematical framework, existence and exactness}
+
+\author{F. M. Faulstich}
+\date{19/03/2024}
+
+\begin{document}
+
+\frame{\titlepage}
+
+
+\begin{frame}{Matrix rank}
+Recall:\\
+~\\
+A matrix $\vA \in \mathbb{R}^{m\times n}$ is of rank $r$ if and only if:
+\begin{itemize}
+    \bitem There are exactly $r$ linearly independent columns in $\vA$
+    \bitem There are exactly $r$ linearly independent row in $\vA$
+    \bitem The image of the linear map induced by $\vA$ is of dimension $r$ 
+    \bitem $r$ is the smallest number such that exist $\vu_i \in \mathbb{R}^m$ and $\vv_i \in \mathbb{R}^n$ and real numbers $\sigma_i>0$ such that 
+    $$
+    \vA 
+    = 
+    \sum_{i=1}^r \sigma_i \vu_i \vv_i^{\top}
+    =
+    \sum_{i=1}^r \sigma_i \vu_i  \otimes \vv_i
+    $$
+    \bitem $r$ is the smallest number, such that there exist $r$-dimensional subspaces $V \subseteq \mathbb{R}^m$ and $U \subseteq \mathbb{R}^n$, such that $A$ is an element of the induced tensor space $V \otimes U \subseteq \mathbb{R}^{m\times n}$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Canonical Polyadic (CP) Decomposition}
+
+Definition:\\
+Let $\vX \in \mathbb{R}^{n_1 \times ... \times n_d}$ be a tensor of order $d$. A representation of $\vX$ as a sum of elementary tensors
+$$
+\vX
+=
+\sum_{p=1}^r
+\vv_{1,p} \otimes ... \otimes \vv_{d,p}
+=
+\sum_{p=1}^r \bigotimes_{i=1}^d \vv_{i,p}
+$$
+for $\vv_{i,p} \in \mathbb{R}^{n_i}$ is called a canonical polyadic (CP) representation of $\vX$. The number of terms $r$ is called the ``rank of the representation''. The minimal $r$, such that there exists a CP decomposition of $X$ with rank $r$, is called the canonical rank or CP-rank of $\vX$.
+
+    
+\end{frame}
+
+\begin{frame}{Example}
+
+\begin{footnotesize}
+\begin{equation*}
+\begin{aligned}
+\begin{bmatrix}
+\begin{bmatrix}
+1.5 & -2.5\\
+2.5 & -2.5
+\end{bmatrix}
+,
+\begin{bmatrix}
+-2 & 2\\
+-2 & 2
+\end{bmatrix}
+\end{bmatrix}
+\pause
+&=
+\begin{bmatrix}
+\begin{bmatrix}
+2 & -2\\
+2 & -2
+\end{bmatrix}
+,
+\begin{bmatrix}
+-2 & 2\\
+-2 & 2
+\end{bmatrix}
+\end{bmatrix}
++
+\begin{bmatrix}
+\begin{bmatrix}
+-.5 & -.5\\
+.5 & .5
+\end{bmatrix}
+,
+\begin{bmatrix}
+0 & 0\\
+0 & 0
+\end{bmatrix}
+\end{bmatrix}\\
+&=
+2
+\begin{bmatrix}
+1\\
+1
+\end{bmatrix}
+\otimes 
+\begin{bmatrix}
+1\\
+-1
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+1\\
+-1
+\end{bmatrix}
++
+(-.5)
+\begin{bmatrix}
+1\\
+-1
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+1\\
+1
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix}\\
+\end{aligned}
+\end{equation*}
+\end{footnotesize}
+\pause
+The rank of this decomposition is 2\\
+However, we also find
+\begin{footnotesize}
+\begin{equation*}
+\begin{aligned}
+\begin{bmatrix}
+\begin{bmatrix}
+1.5 & -2.5\\
+2.5 & -2.5
+\end{bmatrix}
+,
+\begin{bmatrix}
+-2 & 2\\
+-2 & 2
+\end{bmatrix}
+\end{bmatrix}
+\pause
+&=
+1.5
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix}
++
+(-2)
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}\\
+%
+%
+%
+&+
+(-2.5)
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix}
++
+2
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}\\
+%
+%
+%
+&+
+2.5
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix}
++
+(-2)
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}\\
+%
+%
+%
+&+
+(-2.5)
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix}
++
+2
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}
+\otimes
+\begin{bmatrix}
+0\\
+1
+\end{bmatrix}
+\end{aligned}
+\end{equation*}
+\end{footnotesize}
+\pause
+The rank of this decomposition is 8.\\
+\pause
+Deciding whether a rational tensor has CP-rank $r$ is
+NP-hard~\footnote{J. H\aa stad, Journal of Algorithms, 1990}
+
+\end{frame}
+
+
+\begin{frame}{CP deocposition}
+
+
+Given a tensor $\vX$, we seek to find 
+\begin{equation}
+\label{eq:CPrank}
+\vX_*
+=
+\underset{{\rm CP-rank}(\vX_r) \leq r}{\rm argmin} \Vert \vX - \vX_r \Vert
+\end{equation}
+
+Matrices:
+\begin{itemize}
+    \bitem Eckart--Young gives insight for unitarily invariant matrices
+\end{itemize}
+
+Tensors
+\begin{itemize}
+    \bitem For many tensor ranks $r\geq 2$ and all orders $d\geq 3$, regardless of the choice of $\Vert \cdot \Vert $:\\
+    \begin{center}
+    Eq.~\eqref{eq:CPrank} is ill-defined\footnote{De Silva \& Lim, SIAM Journal on Matrix Analysis and Applications, 2008}!
+    \end{center}
+    \bitem There are methods calculating approximate CP decompositions of higher-order tensors\\
+    $\rightarrow$ Challenging and expensive task\\ 
+    $\rightarrow$ In practice approached using optimization algorithms
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Set of Tensors with Fixed Canonical Rank}
+Ill-Definedness of Eq.~\eqref{eq:CPrank} can be connected to the following problem:\\
+~\\
+Let's consider 
+\begin{equation*}
+\mathcal{M}_{\leq r}
+=
+\left\lbrace
+\vX \in \mathbb{R}^{n_1 \times ... \times n_d}~|~
+{\rm CP-rank} (\vX) \leq r
+\right\rbrace
+\end{equation*}
+the sequence
+$$
+\vX_n
+=n
+\left(
+\vu + \frac{1}{n} \vv
+\right)
+\otimes 
+\left(
+\vu + \frac{1}{n} \vv
+\right)
+\otimes 
+\left(
+\vu + \frac{1}{n} \vv
+\right)
+\otimes 
+-
+n \vu \otimes \vu \otimes \vu 
+$$
+with $\vu$, $\vv \in\mathbb{R}^m$, $\Vert \vv \Vert = \Vert \vu \Vert =1$ and $\langle \vv, \vu \rangle \neq 1$.\\
+\pause
+Note that $\vX_n \in \mathcal{M}_{\leq r}$ for all $n\in\mathbb{N}$, however
+$$
+\lim_{n\to \infty} \vX_n 
+=
+\vv \otimes \vu \otimes \vu +
+\vu \otimes \vv \otimes \vu +
+\vu \otimes \vu \otimes \vv
+\notin \mathcal{M}_{\leq r}
+$$
+\pause
+Similarly 
+\begin{equation*}
+\mathcal{M}_{r}
+=
+\left\lbrace
+\vX \in \mathbb{R}^{n_1 \times ... \times n_d}~|~
+{\rm CP-rank} (\vX) = r
+\right\rbrace
+\end{equation*}
+is not closed.
+
+\end{frame}
+
+\begin{frame}{Difficulties CP format}
+
+\begin{itemize}
+\bitem CP decomposition sets have very little structure
+\bitem Low-rank matrices for manifolds\\
+$\rightarrow$ we can use optimization techniques on Manifolds
+\bitem CP rank tensor do not form any kind of manifold 
+$\rightarrow$ optimization on such sets is extremely difficult
+\bitem The approximation is ambiguous\\
+$\rightarrow$ Many parameters $\vv_{p,i}$ approximate the same tensor equally well
+\end{itemize}
+
+\begin{center}
+$\Rightarrow$ More in Mitchell \& Burdick, Journal of Chemometrics, 1994\\
+~\\
+The CP format allows an unparalleled complexity reduction for tensors with small canonical rank!
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}{Computational Aspects of CP decomposition}
+
+Recall:\\
+~\\
+Storing a tensor $\vX \in \mathbb{R}^{n_1\times ... \times n_d}$ requires $\mathcal{O}(n^d)$, where $n = \max_{i} n_i$.\\
+\pause
+~\\
+In the CP format, we store the vector entries $\vv_{i,p}$.\\
+$\rightarrow$ requires $\mathcal{O}(ndr)$\\
+$\rightarrow$ linearly in the dimension
+
+\begin{center}
+What about operations?
+\end{center}
+\end{frame}
+
+\begin{frame}{Addition in CP format}
+Consider 
+
+Then the addition of $\vX$ and $\bar{\vX}$ i.e., 
+$$
+\vX + \bar{\vX}
+=
+\sum_{p=1}^r \bigotimes_{i=1}^d \vv_{i,p} 
++
+\sum_{p=1}^{\bar{r}} \bigotimes_{i=1}^d \bar{\vv}_{i,p}
+=
+\sum_{p=1}^{\bar{r} + r} \bigotimes_{i=1}^d
+\vW_{i,p}
+$$
+with 
+\begin{equation}
+\vw_{i,p}
+=
+\left\lbrace
+\begin{aligned}
+\vv_{i,p}\quad & k\leq r
+\bar{\vv}_{i,p} \quad & k> r
+\end{aligned}
+\right.
+\end{equation}
+In order to access the element, we have to perform the following operation
+$$
+(\vX + \bar{\vX}) [i_1,...,i_d]
+=
+\left( 
+\sum_{p=1}^{\bar{r} + r} \bigotimes_{k=1}^d
+\vW_{i,p} \right) [i_1,...,i_d]
+=
+\sum_{p=1}^{\bar{r} + r} \prod_{k=1}^d
+\vW_{i,p}  [i_k]
+$$
+Which scales as $\mathcal{O}(nd(\bar{r} + r))$, compared to adding two dense tensors $\mathcal{O}(n^d)$
+
+\end{frame}
+
+
+\begin{frame}{$k$th-mode contraction}
+Given a matrix $\vA\in\mathbb{R}^{n_k \times m}$. 
+Then
+\begin{equation*}
+\begin{aligned}
+\vX *_{k} \vA
+&=
+\left( 
+\sum_{p=1}^{\bar{r} + r} \bigotimes_{k=1}^d
+\vW_{i,p} \right) *_{k} \vA\\
+&=
+\sum_{p=1}^{\bar{r} + r} \left( \bigotimes_{k=1}^d
+\vW_{i,p} \right) *_{k} \vA\\
+&=
+\sum_{p=1}^{\bar{r} + r} 
+\vv_{1,p} \otimes ... \otimes \left(\vA^\top \vv_{k,p}\right) \otimes ...\otimes \vv_{d,p}
+\end{aligned}
+\end{equation*}
+    
+\end{frame}
+
+\begin{frame}{Other tensor operations in CP format}
+\begin{table}[]
+    \centering
+    \begin{tabular}{c|cc}
+	Operation & CP-Format & dense tensor\\
+        \hline
+         Hadamard Product & $\mathcal{O}(ndr\bar{r})$ & $\mathcal{O}(n^d)$\\
+         Frobenius Inner Product & $\mathcal{O}(ndr\bar{r})$ & $\mathcal{O}(n^d)$\\ 
+	 Frobenius Norm & $\mathcal{O}(ndr^2)$ & $\mathcal{O}(n^d)$\\
+	 $k$-mode product & $\mathcal{O}((d+m)nr)$ & $\mathcal{O}(n^dm)$\
+    \end{tabular}
+\end{table}
+
+\end{frame}
+
+\end{document}
+
+
+
+
