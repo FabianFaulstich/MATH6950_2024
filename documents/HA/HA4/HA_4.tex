@@ -1,0 +1,271 @@
+\documentclass[11pt]{article}
+
+\newcommand{\bgk}[1]{\boldsymbol{#1}}
+
+\newcommand{\bzero}{\bgk{0}}
+\newcommand{\bone}{\bgk{1}}
+
+\newcommand{\balpha}{\bgk{\alpha}}
+\newcommand{\bnu}{\bgk{\nu}}
+\newcommand{\bbeta}{\bgk{\beta}}
+\newcommand{\bxi}{\bgk{\xi}}
+\newcommand{\bgamma}{\bgk{\gamma}} 
+\newcommand{\bo}{\bgk{o }}
+\newcommand{\bdelta}{\bgk{\delta}}
+\newcommand{\bpi}{\bgk{\pi}}
+\newcommand{\bepsilon}{\bgk{\epsilon}} 
+\newcommand{\bvarepsilon}{\bgk{\varepsilon}} 
+\newcommand{\brho}{\bgk{\rho}}
+\newcommand{\bvarrho}{\bgk{\varrho}}
+\newcommand{\bzeta}{\bgk{\zeta}}
+\newcommand{\bsigma}{\bgk{\sigma}}
+\newcommand{\boldeta}{\bgk{\eta}}
+\newcommand{\btay}{\bgk{\tau}}
+\newcommand{\btheta}{\bgk{\theta}}
+\newcommand{\bvertheta}{\bgk{\vartheta}}
+\newcommand{\bupsilon}{\bgk{\upsilon}}
+\newcommand{\biota}{\bgk{\iota}}
+\newcommand{\bphi}{\bgk{\phi}}
+\newcommand{\bvarphi}{\bgk{\varphi}}
+\newcommand{\bkappa}{\bgk{\kappa}}
+\newcommand{\bchi}{\bgk{\chi}}
+\newcommand{\blambda}{\bgk{\lambda}}
+\newcommand{\bpsi}{\bgk{\psi}}
+\newcommand{\bmu}{\bgk{\mu}}
+\newcommand{\bomega}{\bgk{\omega}}
+
+\newcommand{\bA}{\bgk{A}}
+\newcommand{\bDelta}{\bgk{\Delta}}
+\newcommand{\bLambda}{\bgk{\Lambda}}
+
+\newcommand{\bvec}[1]{\mathbf{#1}}
+
+\newcommand{\va}{\bvec{a}}
+\newcommand{\vb}{\bvec{b}}
+\newcommand{\vc}{\bvec{c}}
+\newcommand{\vd}{\bvec{d}}
+\newcommand{\ve}{\bvec{e}}
+\newcommand{\vf}{\bvec{f}}
+\newcommand{\vh}{\bvec{h}}
+\newcommand{\vi}{\bvec{i}}
+\newcommand{\vj}{\bvec{j}}
+\newcommand{\vk}{\bvec{k}}
+\newcommand{\vl}{\bvec{l}}
+\newcommand{\vm}{\bvec{m}}
+\newcommand{\vn}{\bvec{n}}
+\newcommand{\vo}{\bvec{o}}
+\newcommand{\vp}{\bvec{p}}
+\newcommand{\vq}{\bvec{q}}
+\newcommand{\vr}{\bvec{r}}
+\newcommand{\vs}{\bvec{s}}
+\newcommand{\vt}{\bvec{t}}
+\newcommand{\vu}{\bvec{u}}
+\newcommand{\vv}{\bvec{v}}
+\newcommand{\vw}{\bvec{w}}
+\newcommand{\vx}{\bvec{x}}
+\newcommand{\vy}{\bvec{y}}
+\newcommand{\vz}{\bvec{z}}
+
+\newcommand{\vA}{\bvec{A}}
+\newcommand{\vB}{\bvec{B}}
+\newcommand{\vC}{\bvec{C}}
+\newcommand{\vD}{\bvec{D}}
+\newcommand{\vE}{\bvec{E}}
+\newcommand{\vF}{\bvec{F}}
+\newcommand{\vH}{\bvec{H}}
+\newcommand{\vI}{\bvec{I}}
+\newcommand{\vJ}{\bvec{J}}
+\newcommand{\vK}{\bvec{K}}
+\newcommand{\vL}{\bvec{L}}
+\newcommand{\vM}{\bvec{M}}
+\newcommand{\vN}{\bvec{N}}
+\newcommand{\vO}{\bvec{O}}
+\newcommand{\vP}{\bvec{P}}
+\newcommand{\vQ}{\bvec{Q}}
+\newcommand{\vR}{\bvec{R}}
+\newcommand{\vS}{\bvec{S}}
+\newcommand{\vT}{\bvec{T}}
+\newcommand{\vU}{\bvec{U}}
+\newcommand{\vV}{\bvec{V}}
+\newcommand{\vW}{\bvec{W}}
+\newcommand{\vX}{\bvec{X}}
+\newcommand{\vY}{\bvec{Y}}
+\newcommand{\vZ}{\bvec{Z}}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\usepackage{calc}
+\usepackage{geometry}
+ \geometry{
+ letterpaper,
+ left=30mm,
+ right=30mm,
+ top=30mm,
+ bottom=20mm,
+ }
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{exercise}[theorem]{Exercise}
+
+\usepackage{listings}
+\lstset{
+basicstyle=\footnotesize\ttfamily,
+columns=flexible,
+breaklines=true,
+commentstyle=\color{red},
+keywordstyle=\color{black}\bfseries,
+keepspaces=true
+}
+
+\begin{document}
+
+\begin{flushleft}
+F.M. Faulstich \hfill {\large\bf Math 6590: Homework assignment 4} \hfill {\bf Due:} Wednesday 04/10/2024.\\
+\end{flushleft}
+
+
+\begin{exercise}
+Consider the CP decomposition of $\vX \in \mathbb{R}^{n_1 \times ... \times n_d}$, i.e., the representation of $\vX$ as a sum of elementary tensors
+$$
+\vX
+=
+\sum_{p=1}^r
+\vv_{1,p} \otimes ... \otimes \vv_{d,p}
+=
+\sum_{p=1}^r \bigotimes_{i=1}^d \vv_{i,p}
+$$
+for $\vv_{i,p} \in \mathbb{R}^{n_i}$. Define the matrices
+\begin{equation}
+\vV_i 
+=
+[
+\vv_{i,1}|...|\vv_{i,r}
+]
+\end{equation}
+and show that 
+\begin{equation}
+\vX [i_1,...,i_d]
+=
+\sum_{p=1}^r
+\vV_1[i_1,p] \vV_2[i_2,p] ... \vV_d[i_d,p]
+\end{equation}
+
+\end{exercise}
+
+
+\begin{exercise}
+Consider the sequence
+$$
+\vX_n
+=n
+\left(
+\vu + \frac{1}{n} \vv
+\right)
+\otimes 
+\left(
+\vu + \frac{1}{n} \vv
+\right)
+\otimes 
+\left(
+\vu + \frac{1}{n} \vv
+\right)
+\otimes 
+-
+n \vu \otimes \vu \otimes \vu 
+$$
+with $\vu$, $\vv \in\mathbb{R}^m$, $\Vert \vv \Vert = \Vert \vu \Vert =1$ and $\langle \vv, \vu \rangle \neq 1$.\\
+\begin{itemize}
+\item[i)] Show that 
+ $\vX_n \in \mathcal{M}_{\leq r}$ for all $n\in\mathbb{N}$
+\item[ii)] Show that 
+$$
+\lim_{n\to \infty} \vX_n 
+=
+\vv \otimes \vu \otimes \vu +
+\vu \otimes \vv \otimes \vu +
+\vu \otimes \vu \otimes \vv
+\notin \mathcal{M}_{\leq r}
+$$
+\end{itemize}
+\end{exercise}
+
+\begin{exercise}
+In this exercise, you will implement and compare the different higher-order SVDs introduced in class.
+\begin{itemize}
+    \item[i)] Implement the {\it Truncated Higher-Order SVD} (THOSVD)\\
+    Input: Target tensor $\vA\in\mathbb{R}^{n_1\times ... \times n_d}$, target rank $r = (r_1,...,r_d)$\\
+    Output: Core tensor $\vC\in\mathbb{R}^{r_1\times ... \times r_d}$, basis matrices $\vU_k\in \mathbb{R}^{r_k\times n_k}$ for $1\leq k \leq d$
+    \item[ii)] Implement the {\it Sequential Truncated Higher Order SVD} (STHOSVD)\\
+    Input: Target tensor $\vA\in\mathbb{R}^{n_1\times ... \times n_d}$, target rank $r = (r_1,...,r_d)$\\
+    Output: Core tensor $\vC\in\mathbb{R}^{r_1\times ... \times r_d}$, basis matrices $\vU_k\in \mathbb{R}^{r_k\times n_k}$ for $1\leq k \leq d$
+     \item[iii)] Implement the {\it Randomized Sequential Truncated Higher Order SVD} (R-STHOSVD)\\
+     Input: Target tensor $\vA\in\mathbb{R}^{n_1\times ... \times n_d}$, target rank $r = (r_1,...,r_d)$, oversampling parameter $p\in\mathbb{N}$\\
+    Output: Core tensor $\vC\in\mathbb{R}^{r_1\times ... \times r_d}$, basis matrices $\vU_k\in \mathbb{R}^{r_k\times n_k}$ for $1\leq k \leq d$
+    \item[iv)] Implement the {\it sketeched Sequential Truncated Higher Order SVD} (sketched-STHOSVD)
+    Input: Target tensor $\vA\in\mathbb{R}^{n_1\times ... \times n_d}$, target rank $r = (r_1,...,r_d)$, oversampling parameter $\ell = (\ell_1,...,\ell_d)$\\
+    Output: Core tensor $\vC\in\mathbb{R}^{r_1\times ... \times r_d}$, basis matrices $\vU_k\in \mathbb{R}^{r_k\times n_k}$ for $1\leq k \leq d$
+      \item[v)] Implement the {\it sub-sketch Sequential Truncated Higher Order SVD} (sub-sketch-STHOSVD)\\
+      Input: Target tensor $\vA\in\mathbb{R}^{n_1\times ... \times n_d}$, target rank $r = (r_1,...,r_d)$, oversampling parameter $\ell = (\ell_1,...,\ell_d)$, power $q\in\mathbb{N}$\\
+    Output: Core tensor $\vC\in\mathbb{R}^{r_1\times ... \times r_d}$, basis matrices $\vU_k\in \mathbb{R}^{r_k\times n_k}$ for $1\leq k \leq d$
+      \item[vi)] Run experiment 1 outlined in class:\\
+      Consider the Hilbert tensor $\vA\in\mathbb{R}^{n_1\times ... \times n_d}$ defined as
+      $$
+    \vA [i_1,...,i_d]
+    =
+\frac{1}{i_1+...+i_d},
+\qquad 
+1\leq i_j \leq n_j,~1\leq j \leq d
+$$
+Set the tensor parameters:\vspace{-3mm}
+\begin{itemize}
+\item[$\bullet$] $d = 5$  \vspace{-1.5mm}
+\item[$\bullet$] $n_j = 25$, $j = 1, 2, . . . , d$ \vspace{-1.5mm}
+\item[$\bullet$] Target rank is $(r, r, r, r, r)$, where $r \in [\![1, 25]\!]$\vspace{-2mm}
+\end{itemize}
+Choose the computational parameters:\vspace{-3mm}
+\begin{itemize}
+\item[$\bullet$] Oversampling $p = 5$  \vspace{-1.5mm}
+\item[$\bullet$] $l_i = r_i+2$, $i= 1, 2, . . . , d$ \vspace{-1.5mm}
+\item[$\bullet$] Power parameter $q=1$\vspace{-2mm}
+\end{itemize}
+Reproduce the plots shown in classes (lecture 17)
+\item[vii)] Now consider a Hilbert tensor $\vA \in \mathbb{R}^{500 \times 500 \times  500}$. Run experiments targeting the ranks
+$$
+(i\cdot 10,i\cdot 10,i\cdot 10)\qquad  {\rm for }~ i\in [\![10]\!]
+$$
+Report the CPU time in seconds and the relative error. Reproduce the numbers shown in class (lecture 17).
+\item[viii)] Run experiment 2 outlined in class:\\
+Consider the sparse tensor $\vA\in\mathbb{R}^{200\times  200 \times 200}$:
+$$
+\vA 
+=
+\sum_{i=1}^{10}
+\frac{\gamma}{i^2} \vx_i \otimes \vy_i \otimes \vz_i 
++
+\sum_{i=11}^{200}
+\frac{1}{i^2} \vx_i \otimes \vy_i \otimes \vz_i,
+$$
+where $ \vx_i ,\vy_i , \vz_i \in \mathbb{R}^{200}$ are sparse vectors with $5\%$ nonzeros each \\
+(generated using the \texttt{sprand} command in MATLAB )\\
+Set the tensor parameters:\vspace{-3mm}
+\begin{itemize}
+\item[$\bullet$] $\gamma = 2, 10, 200$ \vspace{-1.5mm}
+\item[$\bullet$] $n_j = 25$, $j = 1, 2, . . . , d$ \vspace{-1.5mm}
+\item[$\bullet$] Target rank is $(r, r, r)$, where $r \in [\![20, 100]\!]$\vspace{-2mm}
+\end{itemize}
+
+Choose the computational parameters:\vspace{-3mm}
+\begin{itemize}
+\item[$\bullet$] Oversampling $p = 5$  \vspace{-1.5mm}
+\item[$\bullet$] $l_i = r_i+2$, $i= 1, 2, . . . , d$ \vspace{-1.5mm}
+\item[$\bullet$] Power parameter $q=1$
+\end{itemize}
+Reproduce the plots shown in class (lecture 17). 
+\end{itemize}
+
+\end{exercise}
+
+\end{document}
