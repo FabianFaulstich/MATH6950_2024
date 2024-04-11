@@ -1,0 +1,584 @@
+\documentclass{beamer}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+
+\usefonttheme{serif}
+\usepackage{dsfont}
+\setbeamersize{text margin left=5pt, text margin right=5pt}
+
+\newcommand{\bgk}[1]{\boldsymbol{#1}}
+
+\newcommand{\bzero}{\bgk{0}}
+\newcommand{\bone}{\bgk{1}}
+
+\newcommand{\balpha}{\bgk{\alpha}}
+\newcommand{\bnu}{\bgk{\nu}}
+\newcommand{\bbeta}{\bgk{\beta}}
+\newcommand{\bxi}{\bgk{\xi}}
+\newcommand{\bgamma}{\bgk{\gamma}} 
+\newcommand{\bo}{\bgk{o }}
+\newcommand{\bdelta}{\bgk{\delta}}
+\newcommand{\bpi}{\bgk{\pi}}
+\newcommand{\bepsilon}{\bgk{\epsilon}} 
+\newcommand{\bvarepsilon}{\bgk{\varepsilon}} 
+\newcommand{\brho}{\bgk{\rho}}
+\newcommand{\bvarrho}{\bgk{\varrho}}
+\newcommand{\bzeta}{\bgk{\zeta}}
+\newcommand{\bsigma}{\bgk{\sigma}}
+\newcommand{\boldeta}{\bgk{\eta}}
+\newcommand{\btay}{\bgk{\tau}}
+\newcommand{\btheta}{\bgk{\theta}}
+\newcommand{\bvertheta}{\bgk{\vartheta}}
+\newcommand{\bupsilon}{\bgk{\upsilon}}
+\newcommand{\biota}{\bgk{\iota}}
+\newcommand{\bphi}{\bgk{\phi}}
+\newcommand{\bvarphi}{\bgk{\varphi}}
+\newcommand{\bkappa}{\bgk{\kappa}}
+\newcommand{\bchi}{\bgk{\chi}}
+\newcommand{\blambda}{\bgk{\lambda}}
+\newcommand{\bpsi}{\bgk{\psi}}
+\newcommand{\bmu}{\bgk{\mu}}
+\newcommand{\bomega}{\bgk{\omega}}
+
+\newcommand{\bA}{\bgk{A}}
+\newcommand{\bDelta}{\bgk{\Delta}}
+\newcommand{\bLambda}{\bgk{\Lambda}}
+\newcommand{\bSigma}{\bgk{\Sigma}}
+\newcommand{\bOmega}{\bgk{\Omega}}
+\newcommand{\bPsi}{\bgk{\Psi}}
+
+\newcommand{\bvec}[1]{\mathbf{#1}}
+
+\newcommand{\va}{\bvec{a}}
+\newcommand{\vb}{\bvec{b}}
+\newcommand{\vc}{\bvec{c}}
+\newcommand{\vd}{\bvec{d}}
+\newcommand{\ve}{\bvec{e}}
+\newcommand{\vf}{\bvec{f}}
+\newcommand{\vg}{\bvec{g}}
+\newcommand{\vh}{\bvec{h}}
+\newcommand{\vi}{\bvec{i}}
+\newcommand{\vj}{\bvec{j}}
+\newcommand{\vk}{\bvec{k}}
+\newcommand{\vl}{\bvec{l}}
+\newcommand{\vm}{\bvec{m}}
+\newcommand{\vn}{\bvec{n}}
+\newcommand{\vo}{\bvec{o}}
+\newcommand{\vp}{\bvec{p}}
+\newcommand{\vq}{\bvec{q}}
+\newcommand{\vr}{\bvec{r}}
+\newcommand{\vs}{\bvec{s}}
+\newcommand{\vt}{\bvec{t}}
+\newcommand{\vu}{\bvec{u}}
+\newcommand{\vv}{\bvec{v}}
+\newcommand{\vw}{\bvec{w}}
+\newcommand{\vx}{\bvec{x}}
+\newcommand{\vy}{\bvec{y}}
+\newcommand{\vz}{\bvec{z}}
+
+\newcommand{\vA}{\bvec{A}}
+\newcommand{\vB}{\bvec{B}}
+\newcommand{\vC}{\bvec{C}}
+\newcommand{\vD}{\bvec{D}}
+\newcommand{\vE}{\bvec{E}}
+\newcommand{\vF}{\bvec{F}}
+\newcommand{\vG}{\bvec{G}}
+\newcommand{\vH}{\bvec{H}}
+\newcommand{\vI}{\bvec{I}}
+\newcommand{\vJ}{\bvec{J}}
+\newcommand{\vK}{\bvec{K}}
+\newcommand{\vL}{\bvec{L}}
+\newcommand{\vM}{\bvec{M}}
+\newcommand{\vN}{\bvec{N}}
+\newcommand{\vO}{\bvec{O}}
+\newcommand{\vP}{\bvec{P}}
+\newcommand{\vQ}{\bvec{Q}}
+\newcommand{\vR}{\bvec{R}}
+\newcommand{\vS}{\bvec{S}}
+\newcommand{\vT}{\bvec{T}}
+\newcommand{\vU}{\bvec{U}}
+\newcommand{\vV}{\bvec{V}}
+\newcommand{\vW}{\bvec{W}}
+\newcommand{\vX}{\bvec{X}}
+\newcommand{\vY}{\bvec{Y}}
+\newcommand{\vZ}{\bvec{Z}}
+
+\usepackage{subcaption}
+\newcommand{\bitem}{\item[$\bullet$]}
+
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareSymbolFont{symbols2}{LS1}{stixfrak} {m} {n}
+\DeclareMathSymbol{\operp}{\mathbin}{symbols2}{"A8}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{lipsum}
+
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\title{
+Eigenvalue Computations\\
+Lecture 20
+}
+%\subtitle{Mathematical framework, existence and exactness}
+
+\author{F. M. Faulstich}
+\date{04/09/2024}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Eigenvalue Problem}
+
+Given $\vA \in\mathbb{C}^{m\times m}$. Then,
+\begin{itemize}
+    \item[i)] we call $\bzero \neq \vx \in\mathbb{C}^m$ eigenvector of $\vA$
+    \item[ii)] we call $\lambda \in \mathbb{C}$ eigenvalue
+\end{itemize}
+if
+$$
+\vA \vx = \lambda \vx
+$$
+
+Intuitively:\\ 
+\pause
+\begin{center}
+The action of $\vA$ on a subspace $S\subseteq \mathbb{C}^m$ mimics a scalar multiplication. The subspace $S$ is then called an eigenspace, and any nonzero $\vx\in S$ is an eigenvector.
+\end{center}
+
+We denote the set of all eigenvalues (the spectrum) of $\vA$ by $\Lambda(\vA) \subset \mathbb{C}$
+
+\end{frame}
+
+
+\begin{frame}{Eigenvalue Decomposition}
+
+\pause
+An eigenvalue decomposition of $\vA \in\mathbb{C}^{m\times m}$ is a factorization
+$$
+\vA = \vX \bLambda \vX^{-1}
+$$
+where $\vX$ is non-singular, and $\bLambda$ is diagonal.\\
+~\\
+\pause
+Note:
+$$
+\vA = \vX \bLambda \vX^{-1}
+~\Leftrightarrow~
+\vA\vX = \vX \bLambda 
+$$
+thus, the j$th$ column of $\vX$ is an eigenvector of
+$\vA$ and the j$th$ entry of $\bLambda$ is the corresponding eigenvalue.
+
+\end{frame}
+
+
+\begin{frame}{Geometric Multiplicity}
+
+Given an eigenvalue $\lambda \in \mathbb{C}$. \\
+\begin{itemize}
+    \bitem We denote $E_\lambda$ the corresponding eigenspace
+    \bitem $E_\lambda$ is an $\vA$-invariant subspace, i.e.,
+    $$
+    \vA E_\lambda \subseteq E_\lambda
+    $$
+    \bitem ${\rm dim}(E_\lambda)$ is the geometric multiplicity of $\lambda$
+    \bitem Note:
+    $$
+    {\rm dim}(E_\lambda) = {\rm dim}({\rm ker}(\vA - \lambda \vI))
+    $$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Characteristic Polynomial}
+
+Given $\vA\in\mathbb{C}^{m\times m}$.
+\begin{itemize}
+    \bitem We call
+    $$
+    p_{\vA}(z)
+    =
+    {\rm det}(z\vI - \vA)
+    $$
+    the characteristic polynomial
+    \bitem $\lambda\in\mathbb{C}$ is an eigenvalue of $\vA$ iff $p_{\vA}(\lambda) = 0$\\
+    \begin{center}
+        $\Rightarrow$ Even if $\vA \in\mathbb{R}^{m\times m}$, $\lambda$ may be complex!
+    \end{center}
+    
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Algebraic multiplicity}
+
+
+\begin{itemize}
+    \bitem Fundamental theorem of algebra:\\
+$$
+p_{\vA}(z)
+=
+(z- \lambda_1)(z- \lambda_2)\cdots (z- \lambda_m)
+$$
+for some $\lambda_j \in \mathbb{C}$.
+\bitem The algebraic multiplicity of $\lambda$ is its multiplicity as a root of $p_{\vA}$ 
+\bitem If $\vA \in \mathbb{C}^{m\times m}$, then $\vA$ has $m$ eigenvalues, counted with algebraic multiplicity.
+\begin{center}
+$\Rightarrow$ Every matrix has at least one eigenvalue
+\end{center}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Similarity Transformations}
+
+Let $\vX \in \mathbb{C}^{m \times m}$ be non-singular
+\begin{itemize}
+    \bitem The map $\vA \mapsto \vX \vA \vX^{-1}$ is called a similarity transformation of $\vA$ 
+    \bitem Two matrices $\vA,~\vB\in\mathbb{C}^{m \times m}$ iff $\exists \vX$ non-singular s.t.
+    $$
+    \vB = \vX \vA \vX^{-1} 
+    $$
+    \bitem Let $\vX$ be non-singular, then $\vA$ and $\vX \vA \vX^{-1}$ have the same 
+    \begin{itemize}
+        \item[i)] characteristic polynomial
+        \item[ii)] eigenvalues
+        \item[iii)] algebraic and geometric multiplicities
+    \end{itemize}
+\end{itemize}
+~\\
+Theorem:\vspace{-2mm}
+\begin{center}
+The algebraic multiplicity of an eigenvalue $\lambda$ is at least as great as its geometric multiplicity.
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Diagonalizability}
+
+\begin{itemize}
+    \bitem  $\vA$ is called non-defective if the algebraic multiplicity equals the geometric multiplicity for all eigenvalues
+    \bitem $\vA \in \mathbb{C}^{m \times m}$ is non-defective iff it has an eigenvalue decomposition.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Computing Eigenvalues}
+
+Eigenvalues correspond to roots of a polynomial\vspace{-2mm}
+\begin{center}
+    There exists no closed form for roots of polynomials of degree $\geq$ 5
+\end{center}
+How do we compute the eigenvalues?\\
+\pause
+We compute eigenvalue revealing decompositions:
+\begin{itemize}
+    \bitem eigenvalue decomposition
+    \bitem unitary eigenvalue decomposition
+    \bitem Schur decomposition (Schur factorization)
+\end{itemize}
+\pause
+General procedure:
+\begin{footnotesize}
+\begin{equation*}
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\end{bmatrix}
+\overset{1.}{\longrightarrow}
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & 0 & \times & \times & \times \\
+0 & 0 & 0 & \times & \times \\
+\end{bmatrix}
+\overset{2.}{\longrightarrow}
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & 0 & \times & \times & \times \\
+0 & 0 & 0 & \times & \times \\
+0 & 0 & 0 & 0 & \times \\
+\end{bmatrix}
+\end{equation*}
+\end{footnotesize}
+\begin{itemize}
+    \item[] Phase 1: Direct computation
+    \item[] Phase 2: Iterative computation
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Hessenberg Form}
+
+Q: Why compute the Hessenberg form?\\
+\only<1>{
+$\Rightarrow$ ``Can't we just use Householder like for linear systems?"
+}
+\only<2>{
+No, we cannot:
+\begin{footnotesize}
+\begin{equation*}
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\end{bmatrix}
+\overset{Q_1^* \cdot}{\longrightarrow}
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+\end{bmatrix}
+\overset{\cdot Q_1}{\longrightarrow}
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\end{bmatrix}
+\end{equation*}
+\end{footnotesize}
+}
+\only<3>{
+(Upper) Hessenberg form is close to diagonal $\Rightarrow$ improves the scaling! 
+}
+    
+\end{frame}
+
+\begin{frame}{Hessenberg Form}
+
+Q: How do we compute the Hessenberg form?\\
+~\\
+\only<2>{
+Householder!
+\begin{footnotesize}
+\begin{equation*}
+\underset{\vA}{
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+\end{bmatrix}
+}
+\overset{Q_1^* \cdot}{\longrightarrow}
+\underset{Q_1^*\vA}{
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+\end{bmatrix}
+}
+\overset{\cdot Q_1}{\longrightarrow}
+\underset{Q_1^*\vA Q_1}{
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+\end{bmatrix}
+}
+\end{equation*}
+\end{footnotesize}
+}
+
+\only<3>{
+\begin{footnotesize}
+\begin{equation*}
+\underset{Q_1^*\vA Q_1}{
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+\end{bmatrix}
+}
+\overset{Q_2^* \cdot}{\longrightarrow}
+\underset{Q_2^*Q_1^*\vA Q_1}{
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & 0 & \times & \times & \times \\
+0 & 0 & \times & \times & \times \\
+\end{bmatrix}
+}
+\overset{\cdot Q_2}{\longrightarrow}
+\underset{Q_2^*Q_1^*\vA Q_1 Q_2}{
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & 0 & \times & \times & \times \\
+0 & 0 & \times & \times & \times \\
+\end{bmatrix}
+}
+\end{equation*}
+\end{footnotesize}
+}
+
+\only<4>{
+\begin{footnotesize}
+\begin{equation*}
+\underset{Q_2^*Q_1^*\vA Q_1 Q_2}{
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & 0 & \times & \times & \times \\
+0 & 0 & \times & \times & \times \\
+\end{bmatrix}
+}
+\overset{Q_3^* \cdot}{\longrightarrow}
+\underset{Q_3^* Q_2^*Q_1^*\vA Q_1 Q_2}{
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & 0 & \times & \times & \times \\
+0 & 0 & 0 & \times & \times \\
+\end{bmatrix}
+}
+\overset{\cdot Q_2}{\longrightarrow}
+\underset{\underbrace{Q_3^* Q_2^*Q_1^*}_{=Q^*}\vA \underbrace{Q_1 Q_2 Q_3}_{=Q} = H}{
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & 0 & \times & \times & \times \\
+0 & 0 & 0 & \times & \times \\
+\end{bmatrix}
+}
+\end{equation*}
+\end{footnotesize}
+}
+    
+\end{frame}
+
+\begin{frame}{Numerical methods}
+
+\only<1>{
+Power Iteration:\\
+\begin{itemize}
+    \item[] $\vv^{(0)}$ some vector with $\Vert \vv^{(0)} \Vert =1 $
+    \item[] for k = 1,2,...
+    \item[] $\qquad$ $\vw = \vA \vv^{(k-1)}$
+    \item[] $\qquad$ $\vv^{(k)} = \vw/\Vert \vw \Vert$
+    \item[] $\qquad$ $\lambda^{(k)} = \big(\vv^{(k)}\big)^\top \vA \vv^{(k)} $
+\end{itemize}
+}
+
+\only<2>{
+Inverse Iteration:\\
+\begin{itemize}
+    \item[] $\vv^{(0)}$ some vector with $\Vert \vv^{(0)} \Vert =1 $
+    \item[] for k = 1,2,...
+    \item[] $\qquad$ Solve $(\vA -\mu \vI )\vw = \vv^{(k-1)}$
+    \item[] $\qquad$ $\vv^{(k)} = \vw/\Vert \vw \Vert$
+    \item[] $\qquad$ $\lambda^{(k)} = \big(\vv^{(k)}\big)^\top \vA \vv^{(k)} $
+\end{itemize}
+}
+
+\only<3>{
+Rayleigh Quotient Iteration:\\
+\begin{itemize}
+    \item[] $\vv^{(0)}$ some vector with $\Vert \vv^{(0)} \Vert =1 $
+    \item[] $\lambda^{(0)} =\big(\vv^{(0)}\big)^\top \vA \vv^{(0)} $
+    \item[] for k = 1,2,...
+    \item[] $\qquad$ Solve $(\vA -\lambda^{(k-1)} \vI )\vw = \vv^{(k-1)}$
+    \item[] $\qquad$ $\vv^{(k)} = \vw/\Vert \vw \Vert$
+    \item[] $\qquad$ $\lambda^{(k)} = \big(\vv^{(k)}\big)^\top \vA \vv^{(k)} $
+\end{itemize}
+}
+
+\only<4>{
+``Pure'' QR algorithm (without shift):\\
+\begin{itemize}
+    \item[] $\vA^{(0)}=\vA$
+    \item[] for k = 1,2,...
+    \item[] $\qquad$ $\vQ^{(k)} \vR^{(k)} = \vA^{(k-1)}$
+    \item[] $\qquad$ $\vA^{(k)} = \vR^{(k)} \vQ^{(k)}$
+\end{itemize}
+}
+
+\only<5>{
+``Practical'' QR algorithm (with shift):\\
+\begin{itemize}
+    \item[] $\big(\vQ^{(0)}\big)^\top \vA^{(0)} \vQ^{(0)}= \vA$
+    \item[] for k = 1,2,...
+    \item[] $\qquad$ Pick $\mu^{(k)}$ \hfill e.g.~$\mu^{(k)} = \vA^{(k-1)}_{m,m}$
+    \item[] $\qquad$ $\vQ^{(k)} \vR^{(k)} = \vA^{(k-1)} - \mu^{(k)} \vI$
+    \item[] $\qquad$ $\vA^{(k)} = \vR^{(k)} \vQ^{(k)} + \mu^{(k)}\vI$
+    \item[] $\qquad$ If any off-diag. element $\vA_{j,j+1}$ us sufficiently small:
+    \item[] $\qquad$ Set $\vA_{j,j+1} = \vA_{j+1,j} = 0$
+    $$
+    \begin{bmatrix}
+    \vA_1 & \bzero \\
+    \bzero & \vA_2
+    \end{bmatrix}
+    = 
+    \vA^{(k)}
+    $$
+    $\qquad$and apply the QR decomposition to $\vA_1$ and $\vA_2$. 
+\end{itemize}
+}
+
+\only<6>{
+
+\begin{itemize}
+    \item[] Jacobi
+    \item[] Bisection
+    \item[] \quad~ \vdots
+\end{itemize}
+}
+
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
