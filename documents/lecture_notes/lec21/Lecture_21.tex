@@ -1,0 +1,339 @@
+\documentclass{beamer}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+
+\usefonttheme{serif}
+\usepackage{dsfont}
+\setbeamersize{text margin left=5pt, text margin right=5pt}
+
+\newcommand{\bgk}[1]{\boldsymbol{#1}}
+
+\newcommand{\bzero}{\bgk{0}}
+\newcommand{\bone}{\bgk{1}}
+
+\newcommand{\balpha}{\bgk{\alpha}}
+\newcommand{\bnu}{\bgk{\nu}}
+\newcommand{\bbeta}{\bgk{\beta}}
+\newcommand{\bxi}{\bgk{\xi}}
+\newcommand{\bgamma}{\bgk{\gamma}} 
+\newcommand{\bo}{\bgk{o }}
+\newcommand{\bdelta}{\bgk{\delta}}
+\newcommand{\bpi}{\bgk{\pi}}
+\newcommand{\bepsilon}{\bgk{\epsilon}} 
+\newcommand{\bvarepsilon}{\bgk{\varepsilon}} 
+\newcommand{\brho}{\bgk{\rho}}
+\newcommand{\bvarrho}{\bgk{\varrho}}
+\newcommand{\bzeta}{\bgk{\zeta}}
+\newcommand{\bsigma}{\bgk{\sigma}}
+\newcommand{\boldeta}{\bgk{\eta}}
+\newcommand{\btay}{\bgk{\tau}}
+\newcommand{\btheta}{\bgk{\theta}}
+\newcommand{\bvertheta}{\bgk{\vartheta}}
+\newcommand{\bupsilon}{\bgk{\upsilon}}
+\newcommand{\biota}{\bgk{\iota}}
+\newcommand{\bphi}{\bgk{\phi}}
+\newcommand{\bvarphi}{\bgk{\varphi}}
+\newcommand{\bkappa}{\bgk{\kappa}}
+\newcommand{\bchi}{\bgk{\chi}}
+\newcommand{\blambda}{\bgk{\lambda}}
+\newcommand{\bpsi}{\bgk{\psi}}
+\newcommand{\bmu}{\bgk{\mu}}
+\newcommand{\bomega}{\bgk{\omega}}
+
+\newcommand{\bA}{\bgk{A}}
+\newcommand{\bDelta}{\bgk{\Delta}}
+\newcommand{\bLambda}{\bgk{\Lambda}}
+\newcommand{\bSigma}{\bgk{\Sigma}}
+\newcommand{\bOmega}{\bgk{\Omega}}
+\newcommand{\bPsi}{\bgk{\Psi}}
+
+\newcommand{\bvec}[1]{\mathbf{#1}}
+
+\newcommand{\va}{\bvec{a}}
+\newcommand{\vb}{\bvec{b}}
+\newcommand{\vc}{\bvec{c}}
+\newcommand{\vd}{\bvec{d}}
+\newcommand{\ve}{\bvec{e}}
+\newcommand{\vf}{\bvec{f}}
+\newcommand{\vg}{\bvec{g}}
+\newcommand{\vh}{\bvec{h}}
+\newcommand{\vi}{\bvec{i}}
+\newcommand{\vj}{\bvec{j}}
+\newcommand{\vk}{\bvec{k}}
+\newcommand{\vl}{\bvec{l}}
+\newcommand{\vm}{\bvec{m}}
+\newcommand{\vn}{\bvec{n}}
+\newcommand{\vo}{\bvec{o}}
+\newcommand{\vp}{\bvec{p}}
+\newcommand{\vq}{\bvec{q}}
+\newcommand{\vr}{\bvec{r}}
+\newcommand{\vs}{\bvec{s}}
+\newcommand{\vt}{\bvec{t}}
+\newcommand{\vu}{\bvec{u}}
+\newcommand{\vv}{\bvec{v}}
+\newcommand{\vw}{\bvec{w}}
+\newcommand{\vx}{\bvec{x}}
+\newcommand{\vy}{\bvec{y}}
+\newcommand{\vz}{\bvec{z}}
+
+\newcommand{\vA}{\bvec{A}}
+\newcommand{\vB}{\bvec{B}}
+\newcommand{\vC}{\bvec{C}}
+\newcommand{\vD}{\bvec{D}}
+\newcommand{\vE}{\bvec{E}}
+\newcommand{\vF}{\bvec{F}}
+\newcommand{\vG}{\bvec{G}}
+\newcommand{\vH}{\bvec{H}}
+\newcommand{\vI}{\bvec{I}}
+\newcommand{\vJ}{\bvec{J}}
+\newcommand{\vK}{\bvec{K}}
+\newcommand{\vL}{\bvec{L}}
+\newcommand{\vM}{\bvec{M}}
+\newcommand{\vN}{\bvec{N}}
+\newcommand{\vO}{\bvec{O}}
+\newcommand{\vP}{\bvec{P}}
+\newcommand{\vQ}{\bvec{Q}}
+\newcommand{\vR}{\bvec{R}}
+\newcommand{\vS}{\bvec{S}}
+\newcommand{\vT}{\bvec{T}}
+\newcommand{\vU}{\bvec{U}}
+\newcommand{\vV}{\bvec{V}}
+\newcommand{\vW}{\bvec{W}}
+\newcommand{\vX}{\bvec{X}}
+\newcommand{\vY}{\bvec{Y}}
+\newcommand{\vZ}{\bvec{Z}}
+
+\usepackage{subcaption}
+\newcommand{\bitem}{\item[$\bullet$]}
+
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareSymbolFont{symbols2}{LS1}{stixfrak} {m} {n}
+\DeclareMathSymbol{\operp}{\mathbin}{symbols2}{"A8}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{lipsum}
+
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\title{
+Sketching Eigenvalue Problems\\
+Lecture 21
+}
+%\subtitle{Mathematical framework, existence and exactness}
+
+\author{F. M. Faulstich}
+\date{04/09/2024}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Eigenvalue problem with sketching}
+
+\begin{itemize}
+    \bitem Let $\vA \in \mathbb{R}^{m\times m}$ be symmetric
+    \bitem Goal: Estimating (parts of) the spectrum via sketching
+    \bitem Rayleigh-Ritz: We have seen that if $\vA \in\mathbb{H}_n$ then 
+    $$
+    \lambda_{\rm min}
+    =
+    \min_{\Vert x \Vert = 1} x^* \vA x
+    $$
+    \bitem Common situation: $m$ is way to large!\\
+    {\bf but} we have an idea ``where'' to look for the eigenvalues
+    $$
+    \vB \in \mathbb{R}^{m \times d}
+    $$
+    is an approximate space over which we seek to find eigenpairs
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Rayleigh-Ritz (Galerkin projection)}
+
+
+\begin{itemize}
+    \bitem Given $\vB= [\vb_1|...|\vb_d] \in \mathbb{R}^{m \times d}$ 
+    \bitem Seeking eigenpairs in ${\rm Span}(\vb_1,...,\vb_d)$, i.e.,
+    $$
+    \vA \vB \vy= \lambda \vB \vy
+    $$ 
+    with $\vA \vB \vy - \lambda \vB \vy = \vr \perp {\rm Span}(\vb_1,...,\vb_d)$ 
+    \bitem Find $\vy \in \mathbb{R}^{d}$ and $\lambda \in \mathbb{C}$ s.t.
+    $$
+    \vB^\top(\vA \vB \vy- \lambda \vB \vy)= \bzero
+    $$
+    NOTE: Here $\{\vb_1,...,\vb_d\}$ are assumed to be orthonormal
+    \bitem The above can be generalized to the eigenvalue problem
+    $$
+    \vM_*\vy = \vB^\dagger \vA \vB \vy= \lambda  \vy
+    $$
+    where $\vy \neq 0$ and $\lambda\in\mathbb{C}$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Rayleigh-Ritz}
+
+\begin{itemize}
+    \bitem Let $(\vy_*, \lambda_*)$ be an eigenpair of $\vM_*$. Then
+    $$
+    \Vert \vA \vB \vy_*- \lambda \vB \vy_* \Vert_2
+    =
+    \Vert (\vA \vB- \vB \vM_*) \vy_* \Vert_2
+    $$
+    \bitem This yields\footnote{Thm. 11.4.2 in Parlett {\it The Symmetric Eigenvalue Problem} (1998)}
+    $$
+    \min_{\vM \in \mathbb{C}^{d\times d}}
+    \Vert \vA\vB - \vB \vM \Vert_F
+    $$
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Rayleigh-Ritz -- algorithmically}
+
+\begin{itemize}
+    \bitem We need to construct $\vB$
+    \bitem Krylov subspace approach:\\
+    $\vr~\leftarrow$ Initial residual\\
+    $\vb_1 = \vr / \Vert \vr \Vert$\\
+    For $p=1$ to $d-1$:\\
+    $\qquad \vw = (\vI - \vB_{p-1} \vB_{p-1}^*) \vb_{p-1}$\\
+    $\qquad \vb_p = \vw / \Vert \vw \Vert$\\
+    $\qquad \vB_p = [\vB_{p-1}|\vb_p]$
+    \bitem Then apply QR algorithm to compute the spectrum:\\
+    $\vA^{(0)}=\vB^\top \vA \vB$\\
+    for $k = 1,2,...$\\
+    $\qquad$ $\vQ^{(k)} \vR^{(k)} = \vA^{(k-1)}$\\
+    $\qquad$ $\vA^{(k)} = \vR^{(k)} \vQ^{(k)}$\\
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Let's put this to the test ... }
+
+Computational setup:
+\begin{itemize}
+    \bitem Consider the 2D Laplacian approximated using finite differences
+    \bitem Recall 1D-Laplacian
+    $$
+    \vL_1 =
+    \begin{pmatrix}
+    2 & -1 &  \\
+    -1 & 2 & -1 & \\
+    & \ddots & \ddots &\ddots \\
+    && -1 & 2 & -1\\
+    &&& -1 & 2\\
+    \end{pmatrix}
+    $$
+    \bitem Then in 2D
+    $$
+    \vL_1 =  \vL_1 \otimes \vI + \vI \otimes \vL_1
+    $$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Sketching Rayleigh-Ritz}
+
+\begin{itemize}
+    \bitem We want to sketch
+    $$
+    \min_{\vM \in \mathbb{C}^{d\times d}}
+    \Vert \vA\vB - \vB \vM \Vert_F
+    $$
+    \bitem Consider the sketch $\vS\in\mathbb{C}^{s\times m}$ then
+    \begin{equation}
+    \min_{\vM \in \mathbb{C}^{d\times d}}
+    \Vert \vS (\vA\vB - \vB \vM) \Vert_F
+    \end{equation}
+    \bitem Sketching Rayleigh-Ritz (sRR) then finds $\hat \vM_*$ minimizing~(1), i.e.,\\
+    $$
+    \vM_*
+    =
+    (\vS\vB)^\dagger \vS\vA\vB
+    $$
+    \bitem $s = 4d$ results in distortion $\varepsilon = 1/\sqrt{2}$ for the range of $[\vA\vB, \vB]$.
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Let's try to make this better I}
+
+\begin{itemize}
+    \bitem Apply different sketches:
+    \begin{itemize}
+        \item[i)]  SRTT:\\
+        $\vG \in\mathbb{R}^{n\times m}$\\
+        $\bsigma \in \mathbb{R}^n$ i.i.d. Rademacher\\
+        $\vi \in \mathbb{R}^d$ random selection index\\
+        $\vF = \bsigma.* \vG$\\
+        $\vF = {\rm dct}(\vF)$ discrete cosine transform (column wise applied)\\
+        $\vF = \vF[\vi,:]/\sqrt{n/d}$
+        \item[ii)] SSE:\\
+        $\zeta = 8$\\
+        $\vG \in\mathbb{R}^{n\times m}$\\
+        For $i=1$ to $m$\\
+        $\qquad$ $\vi \in \mathbb{R}^\zeta$ random selection index\\
+        $\qquad$ $\bsigma \in \mathbb{R}^d$ i.i.d. Rademacher\\
+        $\qquad$ $\vS[\vi, i] = \bsigma/\sqrt{\zeta}$
+    \end{itemize}
+    
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Let's try to make this better II}
+
+\begin{itemize}
+    \bitem Remove the Pseudo potential:\\
+    Note that $[\vU, \vT] ={\rm qr}(\vS\vB)$ yields
+    $$
+    \vM_*
+    =
+    \vT^{-1}\vU^* \vS\vA\vB
+    $$
+    \bitem How to invert $T$?\\
+    $\rightarrow$ Back substitution\\
+    
+    \bitem $\vU \in \mathbb{R}^{m \times n}$ with $\vU_{ij} = 0$ for $i>j$ and $m\geq n$
+    \bitem Solving $\vU \vx = \vb$ from ``bottom up yields''
+    $$
+    \begin{aligned}
+    \vx_{n} &= \vb_{n}/ \vU_{n,n}\\
+    \vx_{n-1} &= (\vb_{n-1} - \vU_{n-1,n} * \vx_{n})/\vU_{n-1,n-1} \\
+    &~~\vdots\\
+    \vx_{i} &= (\vb_{i} - \vU_{i,i+1:n} * \vx_{i+1:n})/\vU_{i,i} 
+    \end{aligned}
+    $$
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}
+
+
+
+
